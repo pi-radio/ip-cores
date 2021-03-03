@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Feb  9 09:24:53 2021
+# Process ID: 20371
+# Current directory: /mnt/hdd/projects/ip_repo/modulator_1.0/hdl
+# Command line: vivado
+# Log file: /mnt/hdd/projects/ip_repo/modulator_1.0/hdl/vivado.log
+# Journal file: /mnt/hdd/projects/ip_repo/modulator_1.0/hdl/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /mnt/hdd/projects/project_1/project_1.xpr
+open_bd_design {/mnt/hdd/projects/project_1/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_compile_order -fileset sources_1
+ipx::edit_ip_in_project -upgrade true -name modulator_v1_0_project -directory /mnt/hdd/projects/project_1/project_1.tmp/modulator_v1_0_project /mnt/hdd/projects/ip_repo/modulator_1.0/component.xml
+update_compile_order -fileset sources_1
+close_project

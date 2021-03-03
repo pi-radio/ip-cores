@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Feb  9 09:24:53 2021
+# Process ID: 20371
+# Current directory: /mnt/hdd/projects/ip_repo/modulator_1.0/hdl
+# Command line: vivado
+# Log file: /mnt/hdd/projects/ip_repo/modulator_1.0/hdl/vivado.log
+# Journal file: /mnt/hdd/projects/ip_repo/modulator_1.0/hdl/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /mnt/hdd/projects/project_1/project_1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/mnt/hdd/projects/ip_repo/modulator_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/mnt/evo/Xilinx_linux/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:08 . Memory (MB): peak = 7457.586 ; gain = 0.000 ; free physical = 5669 ; free virtual = 13036
+open_bd_design {/mnt/hdd/projects/project_1/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+Reading block design file </mnt/hdd/projects/project_1/project_1.srcs/sources_1/bd/design_1/design_1.bd>...
+Adding component instance block -- xilinx.com:user:modulator:1.0 - modulator_0
+Successfully read diagram <design_1> from block design file </mnt/hdd/projects/project_1/project_1.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 8609.848 ; gain = 1152.262 ; free physical = 5482 ; free virtual = 12849
+update_compile_order -fileset sources_1
+ipx::edit_ip_in_project -upgrade true -name modulator_v1_0_project -directory /mnt/hdd/projects/project_1/project_1.tmp/modulator_v1_0_project /mnt/hdd/projects/ip_repo/modulator_1.0/component.xml
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/mnt/evo/Xilinx_linux/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/mnt/hdd/projects/ip_repo/modulator_1.0'.
+INFO: [IP_Flow 19-795] Syncing license key meta-data
+ipx::edit_ip_in_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:06 . Memory (MB): peak = 8770.883 ; gain = 10.766 ; free physical = 5672 ; free virtual = 13046
+update_compile_order -fileset sources_1
+close_project
