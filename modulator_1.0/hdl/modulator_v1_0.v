@@ -114,10 +114,6 @@
         .clk(s00_axis_aclk),
         .rst(s00_axis_aresetn),
         .m_tlast(m00_axis_tlast),
-        .st(state),
-        .wr_addr(wr_addr),
-        .rd_addr(rd_addr),
-        .dat(dat),
         .reset_mod(reset_mod)
 	);
 	
