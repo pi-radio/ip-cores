@@ -470,7 +470,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>5b127d3c</spirit:value>
+            <spirit:value>f56968c2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -486,7 +486,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>5b127d3c</spirit:value>
+            <spirit:value>f56968c2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1105,7 +1105,7 @@
       <spirit:file>
         <spirit:name>hdl/capture_system_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_60ecb603</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_debb8244</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1270,8 +1270,8 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>capture_system_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>16</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2021-02-23T16:29:42Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>33</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2021-04-02T14:49:09Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@a5e2b5e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@667a6ae9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
@@ -1446,13 +1446,196 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@33324427_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2cff82e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7b433980_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@289e64da_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43b496d3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@345ab74f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a1bac_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d7f3c2a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b1b0d16_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fa0ab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28438441_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50a51439_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c072cf7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dc658d0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5157324a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61b0e6b5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@216ffd47_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c9d460e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3484c083_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a5e6e59_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13360fa3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@458cbea_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6121bda5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@603ae2e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5072ea78_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2302be5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ca96586_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70c80cef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@358ac919_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5358e212_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12ade801_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@606f542f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12d49745_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dfea915_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@496e01ec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cb6a7cc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13f086b9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@100ee274_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b533c08_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a7d214b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32cb26b9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@292fcf72_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1373fd87_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71233f70_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66ef89da_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@234859d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61597ee7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@443fb0c2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f63444d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a9fa7ce_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29df71b3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59223056_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25ab693b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@467713e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42d178fa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d307ac_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cd72c3e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5377e058_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5337dd50_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18b59ac5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@361a4495_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25587915_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d68e755_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@162bbc1e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1df5f942_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@165217a2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4611555c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10ef8baf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b3f09ce_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18f29758_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a1175fb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11ca9451_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b5df3a6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2df7505a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7446c378_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@667ec72f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dbb87b3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@421c9002_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54973aaf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61400f56_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37b8acb4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@515dfaef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26630991_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bbf0b19_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bbb6e06_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@652de996_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51e99b09_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@547c2972_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c13c907_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37918b98_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2db79d06_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1be67d1e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9a18096_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49d91c0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f307f6f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fb70582_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5756738d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6eb84ff3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@790dd0db_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1064b5a8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40175bbc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32862a12_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26237cfb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@325ec21c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5808f1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dcb22b4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fb32eb0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b83002f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dee0718_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@698d1838_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e7df440_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@370ab57_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c41b774_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56b3519a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67ddbb14_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4697e4b0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60a0476b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70560f96_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@626d7a5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18920626_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b160927_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b3b0bfc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1edbef81_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42495bd0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72398a41_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6759209b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3924750b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@569f29ed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@303f7bb7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78df44c0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d43f82b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@915ba31_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@686c9506_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d081bef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9c02322_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fc46da3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ea245c6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@469ab1ba_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@161c2a8f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7808794d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b2a77cd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51f49215_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a89c1c7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cda2aa1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f4c3f2e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fa04e68_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b304650_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55e86309_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b61f53a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@377aedcc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b21b099_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e79988_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2933f25e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12e01541_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6abebdc6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a40d319_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@daa2d6b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a32ba7f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1645ae6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52ea8e39_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ea7de7a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a9a8c38_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4570268b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6267da43_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@408eba96_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@448bebeb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59b005c2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65af46a7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bd4edf4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@547c99a5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45562ebe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57d9f5de_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@496447d4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d4d40e9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16bb8ad1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@125c8cb2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a5d001_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@114a9a78_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61370d43_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@298a28dc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27154457_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38be97a4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d9a8d0b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@730ff29_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54b1e2de_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@447eddef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/capture_system_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="f5a65f82"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="abea00cc"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="0af8d91a"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="46c1c638"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="3698c1f1"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="baf63c67"/>

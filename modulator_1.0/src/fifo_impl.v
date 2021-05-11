@@ -149,7 +149,7 @@ module fifo_impl # (
 	        for(bit_index=0; bit_index < C_S_AXIS_TDATA_WIDTH; bit_index=bit_index+1)
 	          case(wdata[bit_index])
 	          1'b0: begin
-	               fifo[write_addr[BIT_DEPTH - 1 : 0]  + bit_index ] <= {16'h0000, 16'h8001}; // Real part
+	               fifo[write_addr[BIT_DEPTH - 1 : 0]  + bit_index ] <= {16'h0000, 16'h8000}; // Real part
 	           end
 	          1'b1:  begin
 	               fifo[write_addr[BIT_DEPTH - 1 : 0]  + bit_index ] <= {16'h0000, 16'h7fff}; // Real part

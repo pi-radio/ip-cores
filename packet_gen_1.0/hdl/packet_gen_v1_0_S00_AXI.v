@@ -93,7 +93,16 @@
 		// TLAST indicates the boundary of a packet.
 		output wire  M_AXIS_TLAST,
 		// TREADY indicates that the slave can accept a transfer in the current cycle.
-		input wire  M_AXIS_TREADY
+		input wire  M_AXIS_TREADY,
+		output wire  S_AXIS_CONFIG_TREADY,
+		// Data in
+		input wire [C_S_AXI_DATA_WIDTH-1 : 0] S_AXIS_CONFIG_TDATA,
+		// Byte qualifier
+		input wire [(C_S_AXI_DATA_WIDTH/8)-1 : 0] S_AXIS_CONFIG_TSTRB,
+		// Indicates boundary of last packet
+		input wire  S_AXIS_CONFIG_TLAST,
+		// Data is in valid
+		input wire  S_AXIS_CONFIG_TVALID
 	);
 
 	// AXI4LITE signals
@@ -137,6 +146,8 @@
 	reg [9 : 0] subc_cnt = 0;
 	reg [9 : 0] symbol_cnt = 0;
 	
+	reg [10 : 0] sync_word_count = 0;
+	
 	
 	reg [9:0] num_samples = 0; 
 	reg mvalid = 0;
@@ -159,6 +170,8 @@
 	assign S_AXI_RDATA	= axi_rdata;
 	assign S_AXI_RRESP	= axi_rresp;
 	assign S_AXI_RVALID	= axi_rvalid;
+	
+	assign S_AXIS_CONFIG_TREADY = (sync_word_count < USED_CARRIERS);
 	// Implement axi_awready generation
 	// axi_awready is asserted for one S_AXI_ACLK clock cycle when both
 	// S_AXI_AWVALID and S_AXI_WVALID are asserted. axi_awready is
@@ -166,8 +179,12 @@
 	
 	always @(posedge S_AXI_ACLK) begin
 	    if ( S_AXI_ARESETN == 1'b0 ) begin
-	       for (m_index = 0; m_index < USED_CARRIERS; m_index = m_index + 8) begin
-	           sync_word[m_index +: 8] = 8'h6b;
+	       sync_word_count <= 0;
+	    end
+	    else begin
+	       if(S_AXIS_CONFIG_TVALID && S_AXIS_CONFIG_TREADY) begin
+	           sync_word[sync_word_count +: C_S_AXI_DATA_WIDTH] = S_AXIS_CONFIG_TDATA;
+	           sync_word_count = sync_word_count + C_S_AXI_DATA_WIDTH;
 	       end
 	    end
 	end
@@ -195,7 +212,7 @@
 	           end
 	       end
 	       else begin
-	           data_out = (seed * subc_cnt) + symbol_cnt;;
+	           data_out = (seed * subc_cnt) + symbol_cnt;
 	       end
 	       subc_cnt = subc_cnt + C_M_AXIS_TDATA_WIDTH;
 	   end

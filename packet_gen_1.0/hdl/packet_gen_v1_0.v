@@ -54,7 +54,15 @@
 		output wire [C_M00_AXIS_TDATA_WIDTH-1 : 0] m00_axis_tdata,
 		output wire [(C_M00_AXIS_TDATA_WIDTH/8)-1 : 0] m00_axis_tstrb,
 		output wire  m00_axis_tlast,
-		input wire  m00_axis_tready
+		input wire  m00_axis_tready,
+		
+		input wire  s00_axis_config_aclk,
+		input wire  s00_axis_config_aresetn,
+		output wire  s00_axis_config_tready,
+		input wire [C_S00_AXI_DATA_WIDTH-1 : 0] s00_axis_config_tdata,
+		input wire [(C_S00_AXI_DATA_WIDTH/8)-1 : 0] s00_axis_config_tstrb,
+		input wire  s00_axis_config_tlast,
+		input wire  s00_axis_config_tvalid
 	);
 // Instantiation of Axi Bus Interface S00_AXI
 	packet_gen_v1_0_S00_AXI # ( 
@@ -86,7 +94,12 @@
 		.M_AXIS_TVALID(m00_axis_tvalid),
 		.M_AXIS_TDATA(m00_axis_tdata),
 		.M_AXIS_TLAST(m00_axis_tlast),
-		.M_AXIS_TREADY(m00_axis_tready)
+		.M_AXIS_TREADY(m00_axis_tready),
+		.S_AXIS_CONFIG_TREADY(s00_axis_config_tready),
+		.S_AXIS_CONFIG_TDATA(s00_axis_config_tdata),
+		.S_AXIS_CONFIG_TSTRB(s00_axis_config_tstrb),
+		.S_AXIS_CONFIG_TLAST(s00_axis_config_tlast),
+		.S_AXIS_CONFIG_TVALID(s00_axis_config_tvalid)
 	);
 
 

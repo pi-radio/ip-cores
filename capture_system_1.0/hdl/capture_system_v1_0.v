@@ -94,6 +94,10 @@
 
     wire len_valid, len_ready;
     wire [31:0] length;
+    
+    wire skip_len_valid;
+    wire [31:0] skip_length;
+        
 	capture_system_v1_0_S00_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
 		.C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
@@ -121,7 +125,9 @@
 		.S_AXI_RREADY(s00_axi_rready),
 		.len_valid(len_valid),
 		.len_ready(len_ready),
-		.length(length)
+		.length(length),
+		.skip_len_valid(skip_len_valid),
+		.skip_length(skip_length)
 	);
 	
 	stream_worker # (
@@ -156,7 +162,9 @@
 		
 		length,
 		len_valid,
-		len_ready
+		len_ready,
+		skip_length,
+		skip_len_valid
 	);
 
 

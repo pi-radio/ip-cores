@@ -57,29 +57,45 @@ module stream_worker #
 		
 		input wire [C_S_AXIS_TDATA_WIDTH-1 : 0] stream_len,
 		input wire len_valid,
-		output wire len_ready
+		output wire len_ready,
+		input wire [C_S_AXIS_TDATA_WIDTH-1 : 0] skip_length,
+		input wire skip_len_valid
     );
     
     reg [C_S_AXIS_TDATA_WIDTH-1 : 0] count_samples = 0;
+    reg [C_S_AXIS_TDATA_WIDTH-1 : 0] skip_count_samples = 0;
     reg [C_S_AXIS_TDATA_WIDTH-1 : 0] length;
     reg [C_M_AXIS_TDATA_WIDTH-1 : 0] data_out;
     
     assign M_AXIS_TDATA = S_AXIS_TDATA;
     assign len_ready = ~(count_samples > 0);
-    assign M_AXIS_TVALID = ~len_ready && S_AXIS_TVALID;
-    assign S_AXIS_TREADY = 1;
+    assign M_AXIS_TVALID = ~len_ready && S_AXIS_TVALID && (skip_count_samples == 0);
+    assign S_AXIS_TREADY = (count_samples < stream_len) ? 
+                                            M_AXIS_TREADY : 1;
     assign M_AXIS_TLAST = (count_samples == 1);
     
     always@(posedge S_AXIS_ACLK) begin
-        if(~S_AXIS_ARESETN)
-            count_samples = 0;
+        if(~S_AXIS_ARESETN) begin
+            count_samples <= 0;
+            skip_count_samples <= 0;
+        end
         else begin
+            if(skip_len_valid && len_ready) begin
+                skip_count_samples <= skip_length;
+            end
             if(len_valid && len_ready) begin
-                count_samples = stream_len;
+                count_samples <= stream_len;
             end
             else begin
-                if( M_AXIS_TVALID && M_AXIS_TREADY && S_AXIS_TVALID) begin
-                    count_samples = count_samples -1;
+                if( M_AXIS_TREADY && S_AXIS_TVALID) begin
+                    if(skip_count_samples == 0) begin
+                        if(M_AXIS_TVALID) begin
+                            count_samples <= count_samples - 1;
+                        end
+                    end
+                    else begin
+                        skip_count_samples <= skip_count_samples - 1;
+                    end
                 end
             end
         end

@@ -81,7 +81,10 @@
 		input wire  S_AXI_RREADY,
 		input wire len_ready,
 		output wire len_valid,
-		output wire [31:0] length
+		output wire [31:0] length,
+		
+		output wire skip_len_valid,
+		output wire [31 : 0] skip_length
 	);
 
 	// AXI4LITE signals
@@ -106,9 +109,11 @@
 	localparam integer OPT_MEM_ADDR_BITS = 1;
 	
 	reg write_len_state = 0;
+	reg skip_len_state = 0;
     
 	
 	assign len_valid = (len_ready) ? write_len_state : 0;
+	assign skip_len_valid = (len_ready) ? skip_len_state : 0;
 	//----------------------------------------------
 	//-- Signals for user logic register space example
 	//------------------------------------------------
@@ -124,14 +129,27 @@
 	reg	 aw_en;
 	
 	assign length = slv_reg0;
+	assign skip_length = slv_reg1;
 
     always@(posedge S_AXI_ACLK) begin
+      if ( S_AXI_ARESETN == 1'b0 ) begin
+        write_len_state <= 0;
+        skip_len_state <= 0;
+      end
+      else begin
         if(write_len_state)
-            write_len_state = 0;
+            write_len_state <= 0;
         else begin
             if (slv_reg_wren && axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 2'h0)
-                write_len_state = 1;
+                write_len_state <= 1;
         end
+        if(skip_len_state)
+            skip_len_state <= 0;
+        else begin
+            if (slv_reg_wren && axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 2'h1)
+                skip_len_state <= 1;
+        end
+      end
     end
 	// I/O Connections assignments
 
