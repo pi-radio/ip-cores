@@ -4,16 +4,20 @@
 
 #define INIT 1
 
+#define SYMBOL_SIZE              1280
 #define NUM_FRAMES               2
-#define SKIP_SAMPS               (1280)
-#define DATA_LOGGED_LEN          (10 * 100 * NUM_FRAMES)
-#define DATA_OUT_LEN             (225 * 4 * 32)//((9 * 1024 * 4) * (NUM_FRAMES - 1))/32
-#define DATA_RX_INPUT_LEN        (NUM_FRAMES * 10 * 1024 * 4 - SKIP_SAMPS * 4)
+#define SKIP_SAMPS               (SYMBOL_SIZE * 6 - 143)
+#define DATA_RX_INPUT_LEN        (NUM_FRAMES * 10 * SYMBOL_SIZE * 4 - SKIP_SAMPS * 4)
+
+#define DATA_OUT_LEN             ((9 * 100) * (NUM_FRAMES - 1))
+#define DATA_LOGGED_LEN          ((10 * 100) * (NUM_FRAMES))
+
+
 uint8_t data[DATA_OUT_LEN];
 uint8_t data_log[DATA_LOGGED_LEN];
 
 #define FFT_SIZE                 1024
-#define NUM_TAPS                 11
+#define NUM_TAPS                 10
 #define TAPS_SIZE                (NUM_TAPS * 4)
 #define COMPLEX_SAMP_SIZE_BYTES  4
 #define RX_PORT                  18888
@@ -27,6 +31,7 @@ uint8_t data_log[DATA_LOGGED_LEN];
 #define LOGGER_RX_OFFSET         (OUTPUT_RX_OFFSET + DATA_OUT_LEN)
 #define TAPS_OFFSET              (LOGGER_RX_OFFSET + DATA_LOGGED_LEN)
 #define ZEROS_OFFSET             (TAPS_OFFSET + TAPS_SIZE)
+#define CP_LEN_OFFSET            (ZEROS_OFFSET + 16)
 
 uint8_t sync_tmp[SYNC_MOD_BYTES];
 uint32_t taps[NUM_TAPS];
@@ -154,8 +159,15 @@ int main() {
 
 	memset(taps, 0, TAPS_SIZE);
 	taps[0] = 0x00007fff;
-	//taps[1] = 0x00004000;
-
+	taps[1] = 0x00000000;
+	taps[2] = 0x00000000;
+	taps[3] = 0x00000000;
+	taps[4] = 0x00000000;
+	taps[5] = 0x00006000;
+	taps[6] = 0x00000000;
+	taps[7] = 0x00000000;
+	taps[8] = 0x00000000;
+	taps[9] = 0x00000000;
 	int sockfd;
 
 	struct sockaddr_in servaddr, cliaddr;
@@ -250,10 +262,13 @@ int main() {
 	}
 
 	/* Configure the two FFT engines for inverse FFT operation*/
-	memset(ddr_rx_base + ZEROS_OFFSET, 0, 4 * 4);
+	memset(ddr_rx_base + CP_LEN_OFFSET, 0x0, 4);
+	uint32_t test = 0x100;
+	memcpy((uint8_t *)(ddr_rx_base + CP_LEN_OFFSET), &test, 4);
 	reset_tx_dma_engine(dma_ifft_tx_base);
-	config_tx_dma(dma_ifft_tx_base,DDR_BASE_ADDRESS + ZEROS_OFFSET, 4);
+	config_tx_dma(dma_ifft_tx_base,DDR_BASE_ADDRESS + CP_LEN_OFFSET, 4);
 
+	memset(ddr_rx_base + ZEROS_OFFSET, 0x0, 4 );
 	reset_tx_dma_engine(dma_ifft_rx_base);
 	config_tx_dma(dma_ifft_rx_base,DDR_BASE_ADDRESS + ZEROS_OFFSET, 4);
 
@@ -292,6 +307,16 @@ int main() {
 		printf("Wrong number of bytes for configuring correlator\n");
 	}
 #endif
+
+	write_to_base(capt_syst_delay_base + 0x04, SKIP_SAMPS);
+	write_to_base(capt_syst_delay_base, (DATA_RX_INPUT_LEN / 4));
+
+	/* Start capture system */
+	write_to_base(capt_syst_base, DATA_OUT_LEN/ 4);
+
+
+	write_to_base(capt_syst_logger_base, DATA_LOGGED_LEN / 4);
+
 //	/* Config logger DMA */
 	reset_rx_dma_engine(dma_logger_base);
 	config_rx_dma(dma_logger_base,DDR_BASE_ADDRESS + LOGGER_RX_OFFSET, DATA_LOGGED_LEN );
@@ -300,30 +325,44 @@ int main() {
 	reset_rx_dma_engine(dma_pl_ps_base);
 	config_rx_dma(dma_pl_ps_base,DDR_BASE_ADDRESS + OUTPUT_RX_OFFSET, DATA_OUT_LEN);
 
-	/* Start capture system */
-	write_to_base(capt_syst_base, DATA_OUT_LEN/ 4);
 
-
-	write_to_base(capt_syst_logger_base, DATA_LOGGED_LEN / 4);
 
 #if INIT==1
 	/* Start packet generator */
 	write_to_base(packet_gen_base, 1);
 
 	//usleep(100);
-	write_to_base(capt_syst_delay_base + 0x04, SKIP_SAMPS);
-	write_to_base(capt_syst_delay_base, (DATA_RX_INPUT_LEN / 4));
+
 #endif
 	while(! (XAXIDMA_IRQ_IOC_MASK && read_from_base(dma_pl_ps_base + XAXIDMA_RX_OFFSET + XAXIDMA_SR_OFFSET))){
 		// Busy wait
 	}
 
 	uint32_t txed = read_from_base(dma_pl_ps_base + XAXIDMA_RX_OFFSET +
-			XAXIDMA_BUFFLEN_OFFSET);
+	XAXIDMA_BUFFLEN_OFFSET);
 
 	memcpy(data, ddr_rx_base + OUTPUT_RX_OFFSET, txed);
 
+	uint32_t txed_log = read_from_base(dma_logger_base + XAXIDMA_RX_OFFSET +
+	XAXIDMA_BUFFLEN_OFFSET);
 
+	memcpy(data_log, ddr_rx_base + LOGGER_RX_OFFSET, txed_log);
+
+	uint32_t correct = 0;
+	uint32_t off[500];
+	uint32_t off_cnt = 0;
+	for (int i = 0; i < txed; i++) {
+		if (data[i] == data_log[i + 1100])
+			correct++;
+		else {
+			off[off_cnt] = i;
+			off_cnt++;
+		}
+	}
+	int success = 0;
+
+	if (correct == txed)
+		success = 1;
 
 
 	cliaddr.sin_port = htons(TX_PORT);
@@ -331,13 +370,13 @@ int main() {
 	int32_t count = total_data, tosend = 1000;
 	while(count >= 0){
 		sleep(1);
-		sendto(sockfd, data + (total_data - count), tosend, 0, (const struct sockaddr *) &cliaddr,
+		sendto(sockfd, data_log + (total_data - count), tosend, 0, (const struct sockaddr *) &cliaddr,
 						       sizeof(cliaddr));
 		count -= tosend;
 		if(count < tosend){
 			tosend = count;
 			sleep(1);
-			sendto(sockfd, data + (total_data - tosend), tosend, 0, (const struct sockaddr *) &cliaddr,
+			sendto(sockfd, data_log + (total_data - tosend), tosend, 0, (const struct sockaddr *) &cliaddr,
 							       sizeof(cliaddr));
 			break;
 		}
