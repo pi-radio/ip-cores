@@ -79,13 +79,17 @@
 	 
 	wire [26 : 0] mag_sq_sample;
 	wire [26 : 0] db_sample;
+	
+	reg state_tx = 0;
+	localparam IDLE = 0,
+	           TXING = 1;
 
-    reg [2 : 0] state = 0;
+    reg [2 : 0] state_peak_det = 0;
     reg [2 : 0] NOISE_EST = 2'b00,
                 FIRST_SEARCH = 2'b01,
                 SECOND_SEARCH = 2'b10,
                 THIRD_SEARCH = 2'b11,
-                TXING = 3'b100;
+                PEAK_DETECTED = 3'b100;
     localparam noise_samples = 1024;
     localparam symbol_size = 1024;
     localparam cp_len = 256;
@@ -122,6 +126,8 @@
     
     // State variable to hold the inferred start of frame
     reg [11 : 0] start_of_frame = 0;
+    reg [11 : 0] start_of_frame_tmp = 0;
+    reg sof_dec_bit = 0;
     
     // The queue which holds two frames maximum
     reg [31 : 0] buffer [0 : 2*symbol_size];
@@ -153,6 +159,10 @@
     
     wire start_tx;
     
+    reg peak_search_abort = 0;
+    
+    reg edge_case_peak = 0;
+    
     always @(posedge s_axis_corr_aclk) begin
         if(!s_axis_corr_aresetn)
             checkpoint <= 0;
@@ -163,13 +173,13 @@
                 checkpoint <= 0;
     end
     
-    assign start_tx = (start_of_frame[10 : 0] == 0) ? (state == TXING) && ~checkpoint :
-                                                    (state == TXING) && (data_in_queue > 0) && ~checkpoint;
+    assign start_tx = (start_of_frame[10 : 0] == 0 && data_in_queue == 0) ? (state_tx == TXING) && ~checkpoint :
+                                                    (state_tx == TXING) && (data_in_queue > 0) && ~checkpoint;
     assign buffer_read = start_of_frame + data_sent;
     assign m00_axis_tvalid = (cp_rm_count >= cp_len) && start_tx;
     assign data_in_queue = (buffer_write - buffer_read) >= 2048 ? (buffer_write - buffer_read) & 11'h7ff:
                                                               buffer_write - buffer_read;
-    assign m00_axis_tdata =  (start_of_frame[10 : 0] == 0) ? s_axis_data_in_tdata :
+    assign m00_axis_tdata =  (start_of_frame[10 : 0] == 0 && data_in_queue == 0) ? s_axis_data_in_tdata :
                             buffer[buffer_read[10 : 0]];
     
     assign tlast_recv = which_half != old_which_half;
@@ -179,137 +189,164 @@
     // when the queue is full.
     assign stop = (((buffer_write % 1024) == 0) && (buffer_write != 0)) || wrapped;
     assign s_axis_data_in_tready = ((s_axis_corr_tvalid) && ((~stop ||  (tlast_recv)))) || 
-                                    ((state == TXING) && (data_in_queue < 2*1024 - 1));
+                                    ((state_tx == TXING) && (data_in_queue < 2*1024 - 1));
 
     always @ (posedge s_axis_corr_aclk) begin
         if(!s_axis_corr_aresetn) begin
-            state <= 0;
+            state_peak_det <= NOISE_EST;
+            state_tx <= IDLE;
             start_of_frame <= 0;
+            start_of_frame_tmp <= 0;
             tx_ended_ack1 <= 0;
             which_half <= 0;
             noise_floor <= 0;
         end
-        else 
+        else
+        if(peak_search_abort == 1)
+            peak_search_abort <= 0; 
         if(s_axis_corr_tlast)
             which_half <= ~which_half;
-        if(s_axis_corr_tlast && state != TXING) begin
+        if(s_axis_corr_tlast) begin
         if(notify_reset)
             tx_ended_ack1 = 0;
-        case(state) 
+        case(state_peak_det) 
              NOISE_EST: begin
                     noise_floor <= (noise_accum) >> 10;
-                    state <= FIRST_SEARCH;
+                    state_peak_det <= FIRST_SEARCH;
              end 
-             FIRST_SEARCH:
+             FIRST_SEARCH: begin
+                if(edge_case_peak)
+                    edge_case_peak <= 0;
                 if(max_mag > 0)
-//                    if(max_index > 0)
-                        state <= SECOND_SEARCH;
-//                     else begin
-//                        state <= TXING;
-//                        start_of_frame <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
-//                     end
+                        state_peak_det <= SECOND_SEARCH;
                 else begin
                    if ((noise_floor + threshold < mag_sq_sample)) begin
-                        state <= SECOND_SEARCH; // Edge case
+                        state_peak_det <= SECOND_SEARCH; // Edge case
+                        edge_case_peak <= 1;
                    end             
                 end
-                
+             end
              SECOND_SEARCH: begin
-                if(wrapped || (buffer_write[11 : 8] == 4'hc))
-                    start_of_frame[11] <= 1;
-                 else
-                    start_of_frame[11] <= 0;
+                  if ((noise_floor + threshold < mag_sq_sample) && edge_case_peak) begin
+                        state_peak_det <= THIRD_SEARCH; // Edge case
+                  end
+                  else begin
+                  edge_case_peak <= 0;
                   if(max_mag2 > 0) begin
                     if(max_index == max_index2) begin
                         if (max_index == 0) begin
-                            state <= TXING;
-                            start_of_frame <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
+                            state_peak_det = PEAK_DETECTED;
+                            if(state_tx == IDLE) begin
+                                state_tx <= TXING;
+                                start_of_frame <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
+                            end
+                            else
+                                start_of_frame_tmp <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
                         end
-                        else
-                            state <= THIRD_SEARCH;
-                     end
-                     else if (max_index_txing == max_index_txing_stored) begin
-                        if (max_index_txing == 0) begin
-                            state <= TXING;
-                            start_of_frame <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
+                        else begin
+                            state_peak_det <= THIRD_SEARCH;
                         end
-                        else
-                            state <= THIRD_SEARCH;
                      end
-                     else
-                        state <= FIRST_SEARCH;
+                     else begin
+                        state_peak_det <= FIRST_SEARCH;
+                        peak_search_abort <= 1;   
+                     end
                   end
-                  else
-                    state <= FIRST_SEARCH;
+                  else begin
+                    state_peak_det <= FIRST_SEARCH;
+                    peak_search_abort <= 1; 
+                 end
+                 end
              end
              THIRD_SEARCH: begin
                 if(wrapped || (buffer_write[11 : 8] == 4'hc))
-                    start_of_frame[11] <= 1;
+                    sof_dec_bit <= 1;
                  else
-                    start_of_frame[11] <= 0;
+                    sof_dec_bit <= 0;
+                    
+//                if(edge_case_peak) begin
+//                    edge_case_peak <= 0;
+//                    start_of_frame[11] <= sof_dec_bit;
+//                    start_of_frame <= which_half ? (1024 + 1) & 11'h7ff :
+//                                                    (1) & 11'h7ff;
+//                end
                 if(max_mag3 > 0) begin
                     if(((max_index == max_index3) && (max_index == max_index2)) || (max_index_txing == max_index3)) begin
-                        state <= TXING;
-                        if(max_index == 0)
-                            start_of_frame <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
-                        else
-                            start_of_frame <= which_half ? (1024 + 1024 - max_index2) & 11'h7ff :
+                        state_peak_det = PEAK_DETECTED;
+                        if(state_tx == IDLE) begin
+                            state_tx <= TXING;
+                            start_of_frame[11] <= sof_dec_bit;
+                            if(max_index == 0)
+                                start_of_frame <= ~which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
+                            else
+                                start_of_frame <= which_half ? (1024 + 1024 - max_index2) & 11'h7ff :
                                                     (1024 - max_index2) & 11'h7ff;
+                        end
+//                        else begin
+//                            start_of_frame[11] <= sof_dec_bit;
+//                            if(max_index == 0)
+//                                start_of_frame_tmp <= ~which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
+//                            else
+//                                start_of_frame_tmp <= ~which_half ? (1024 + 1024 - max_index2) & 11'h7ff :
+//                                                    (1024 - max_index2) & 11'h7ff;                        
+//                        end
                     end
-                    else
-                        state <= FIRST_SEARCH;
+                    else begin
+                        state_peak_det <= FIRST_SEARCH;
+                        peak_search_abort <= 1;     
+                    end
                  end
                  else begin
                     if(max_mag2 > 0) begin
                         if(max_index2 <= 512) begin
-                            state <= TXING;
-                            start_of_frame <= which_half ? (1024 - max_index2) & 11'h7ff:
+                            state_peak_det = PEAK_DETECTED;
+                            if(state_tx == IDLE) begin
+                                state_tx <= TXING;
+                                start_of_frame[11] <= sof_dec_bit;
+                                start_of_frame <= which_half ? (1024 - max_index2) & 11'h7ff:
                                                              (1024 + 1024 - max_index2)& 11'h7ff;
+                             end
                         end
                         else begin
-                            state <= TXING;
-                            start_of_frame <= which_half ? (1024 + 1024 - max_index2) & 11'h7ff:
-                                                                (1024 - max_index2)& 11'h7ff;
-                        end
-                    end
-                    else if(max_mag_txing > 0) begin
-                        if(max_index_txing <= 512) begin
-                            state <= TXING;
-                            start_of_frame <= which_half ? (1024 - max_index_txing) & 11'h7ff:
-                                                             (1024 + 1024 - max_index_txing)& 11'h7ff;
-                        end
-                        else begin
-                            state <= TXING;
-                            start_of_frame <= which_half ? (1024 + 1024 - max_index_txing) & 11'h7ff:
-                                                                (1024 - max_index_txing)& 11'h7ff;
+                            state_peak_det = PEAK_DETECTED;
+                            if(state_tx == IDLE) begin
+                                state_tx <= TXING;
+                                start_of_frame[11] <= sof_dec_bit;
+                                start_of_frame <= which_half ? (1024  - max_index2) & 11'h7ff:
+                                                                (1024 + 1024 - max_index2)& 11'h7ff;
+                            end
                         end
                     end
                  end
                end
+             PEAK_DETECTED: begin
+                if(max_mag > 0)
+                        state_peak_det <= SECOND_SEARCH;
+                else begin
+                   if ((noise_floor + threshold < mag_sq_sample)) begin
+                        state_peak_det <= SECOND_SEARCH; // Edge case
+                   end
+                   else begin
+                        state_peak_det <= FIRST_SEARCH;
+                        peak_search_abort <= 1; 
+                   end     
+                end
+             end  
+             
          endcase
          
          end
-         else if (state == TXING && s_axis_corr_tlast)
+         if (state_tx == TXING) begin
             if(tx_ended) begin
-                if(max_mag_txing > 0 && max_mag_txing_stored == 0) begin
-                    state <= SECOND_SEARCH;
+               tx_ended_ack1 <= 1;
+               if(start_of_frame_tmp > 0) begin
+                    start_of_frame <= start_of_frame_tmp;
+                    start_of_frame_tmp <= 0;
                 end
-                else if (max_mag_txing > 0 && max_mag_txing_stored > 0)
-                    state <= THIRD_SEARCH;
                 else
-                   if ((noise_floor + threshold < mag_sq_sample)) begin
-                        state <= SECOND_SEARCH; // Edge case
-                   end
-                   else  
-                    state <= FIRST_SEARCH;
-             tx_ended_ack1 <= 1;   
+                    state_tx <= IDLE;
             end
-            else begin
-                if(max_index_txing > 0 ) begin
-                    max_index_txing_stored = max_index_txing;
-                    max_mag_txing_stored = max_mag_txing;
-                end
-            end
+         end
     end
     
     always @ (posedge s_axis_corr_aclk) begin
@@ -337,7 +374,7 @@
           if(notify_reset) begin
             tx_ended_ack2 <= 0;
           end
-          if(tx_ended) begin
+          if(state_peak_det == PEAK_DETECTED || peak_search_abort) begin
               max_mag <= 0;
               max_index <= 0;
               samp_cnt <= 0;
@@ -345,12 +382,23 @@
               max_index2 <= 0;
               max_mag3 <= 0;
               max_index3 <= 0;
-              tx_ended_ack2 <= 1;   
+                 
           end
+          if(tx_ended)
+            tx_ended_ack2 <= 1;
           if(s_axis_corr_tvalid) begin
-            if (state == NOISE_EST) 
+            if (state_peak_det == NOISE_EST) 
                     noise_accum <= noise_accum + mag_sq_sample;
-            else if(state == FIRST_SEARCH) begin
+            else if (state_peak_det == PEAK_DETECTED) begin
+               if (noise_floor + threshold < mag_sq_sample) begin
+                    max_mag <= mag_sq_sample;
+                    max_index <= samp_cnt;
+                    samp_cnt <= samp_cnt + 1;
+                end
+                else
+                   samp_cnt <= samp_cnt + 1;
+            end
+            else if(state_peak_det == FIRST_SEARCH) begin
                 if ((noise_floor + threshold < mag_sq_sample) && (mag_sq_sample > max_mag)) begin
                     max_mag <= mag_sq_sample;
                     max_index <= samp_cnt;
@@ -359,8 +407,8 @@
                 else
                    samp_cnt <= samp_cnt + 1;
             end
-            else if( state == SECOND_SEARCH) begin
-                second_check <= 1;
+            else if( state_peak_det == SECOND_SEARCH) begin
+               
                 if ((noise_floor + threshold < mag_sq_sample) && (mag_sq_sample > max_mag2)) begin
                     max_mag2 <= mag_sq_sample;
                     max_index2 <= samp_cnt;
@@ -369,7 +417,7 @@
                 else
                    samp_cnt <= samp_cnt + 1;
             end
-            else if(state == THIRD_SEARCH) begin
+            else if(state_peak_det == THIRD_SEARCH) begin
                 //second_check <= 1;
                 if ((noise_floor + threshold < mag_sq_sample) && (mag_sq_sample > max_mag3)) begin
                     max_mag3 <= mag_sq_sample;
@@ -378,23 +426,6 @@
                 end
                 else
                    samp_cnt <= samp_cnt + 1;
-            end
-            else if(state == TXING) begin
-                if(second_check) begin
-                    max_mag_txing <= 0;
-                    max_index_txing <= 0;
-                    samp_cnt_txing <= 0;
-                    second_check <= 0;
-                    max_mag_txing_stored <= 0;
-                    max_index_txing_stored <= 0;
-                end
-                if ((noise_floor + threshold < mag_sq_sample) && (mag_sq_sample > max_mag_txing)) begin
-                    max_mag_txing <= mag_sq_sample;
-                    max_index_txing <= samp_cnt_txing;
-                    samp_cnt_txing <= samp_cnt_txing + 1;
-                end
-                else 
-                    samp_cnt_txing <= samp_cnt_txing + 1;
             end
           end // if valid
         end
@@ -423,7 +454,7 @@
                         wrapped <= 0;
                     if(buffer_write == 12'hfff)
                         wrapped <= 1;
-                    if(state != TXING) begin
+                    if(state_tx != TXING) begin
                         buffer[buffer_write[10 : 0]] <= s_axis_data_in_tdata;
                         buffer_write <= buffer_write + 1;
                     end
@@ -453,7 +484,7 @@
         cp_rm_count <= 0;
      end
      else begin
-         if(reset) begin
+         if(tx_ended) begin
             notify_reset <= 1;
             tx_ended <= 0;
             data_sent <= 0;

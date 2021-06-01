@@ -72,7 +72,7 @@ module stream_worker #
     assign M_AXIS_TVALID = ~len_ready && S_AXIS_TVALID && (skip_count_samples == 0);
     assign S_AXIS_TREADY = (count_samples < stream_len) ? 
                                             M_AXIS_TREADY : 1;
-    assign M_AXIS_TLAST = (count_samples == 1);
+    assign M_AXIS_TLAST = (count_samples == 1) && S_AXIS_TVALID;
     
     always@(posedge S_AXIS_ACLK) begin
         if(~S_AXIS_ARESETN) begin

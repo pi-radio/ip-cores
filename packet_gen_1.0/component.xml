@@ -397,7 +397,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>POLARITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_CONFIG_ARESETN.POLARITY" spirit:choiceRef="choice_list_74b5137e">ACTIVE_LOW</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_CONFIG_ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -460,7 +460,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>13680f8a</spirit:value>
+            <spirit:value>327c7309</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -476,7 +476,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>13680f8a</spirit:value>
+            <spirit:value>327c7309</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1065,11 +1065,6 @@
       <spirit:enumeration>32</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_list_74b5137e</spirit:name>
-      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
-      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
       <spirit:name>choice_list_9d8b0d81</spirit:name>
       <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
@@ -1238,8 +1233,8 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>packet_gen_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>43</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2021-03-08T13:37:11Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>45</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2021-05-24T09:50:22Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1599b3b8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@40afdd16_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
@@ -1610,14 +1605,26 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4c23803c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1cfa4760_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@60823fe6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d1596ea_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10fab2ed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c001d9d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15315c5c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6965461b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c2c6ecb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b0d3af8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3567a58_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@aad800a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4643d135_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4af78210_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5caede36_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/packet_gen_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="7396a08b"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="98a3e8c6"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6a71aabc"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="a5d8cfca"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="4c1c6041"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="93b55adf"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="e27ac753"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="33f78887"/>
     </xilinx:packagingInfo>

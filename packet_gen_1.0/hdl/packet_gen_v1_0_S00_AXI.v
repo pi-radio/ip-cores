@@ -212,7 +212,7 @@
 	           end
 	       end
 	       else begin
-	           data_out = (seed * subc_cnt) + symbol_cnt;
+	           data_out =  (seed * subc_cnt) + symbol_cnt;
 	       end
 	       subc_cnt = subc_cnt + C_M_AXIS_TDATA_WIDTH;
 	   end

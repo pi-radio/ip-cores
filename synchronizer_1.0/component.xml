@@ -312,7 +312,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>746a833d</spirit:value>
+            <spirit:value>a32327a0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -328,7 +328,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>746a833d</spirit:value>
+            <spirit:value>a32327a0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -712,7 +712,7 @@
       <spirit:file>
         <spirit:name>hdl/synchronizer_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_746a833d</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_a32327a0</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -805,8 +805,8 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>synchronizer_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>124</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2021-05-24T14:21:20Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>140</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2021-05-31T08:18:28Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@72f9028_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2a700c7b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
@@ -2063,12 +2063,131 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@13454ec8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3ac351d0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@33be9c56_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@572956d7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e308079_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c6a0e60_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@151cfa59_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aaf906d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fdb2979_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f4d1995_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ee0261f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9b39bd8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2968015e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a09dfe3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7295f18c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21def8c2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67128c29_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@597980d4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e6c11af_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2db5f44_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fdd314c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d9ffab5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f4c48c4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41316c9c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6927d0e4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43bdf48a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@624c40dd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b0e0f15_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51356d34_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6373d68_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2329085e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9215516_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f9579b1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68a91041_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ca9c568_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@868003_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b297af9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b701d21_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@422f596_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@410f33af_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47387a6c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4321a8f8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11a71316_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71319956_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bd5432_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cbd69d0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47f419d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1904669f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c76ecb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f43b854_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2bed15c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@744db5f3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@559220e3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32d93a0c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b8df914_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f01b24f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13ef9b80_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12082136_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@526bc895_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43d3a3d5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ac3046c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d6c86dd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@376bf1c3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cc017e0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74c727ac_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b8db88c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b361116_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@197b9ca7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49668846_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d733f49_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68fc6ece_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e6986b2_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@310e668f_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63a0e716_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3340934e_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ff82f87_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23a76c1_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50fe5ad4_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37ba4cb5_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a9c259f_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45db843d_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51e559ec_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c8fad29_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15e2a278_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@371e0e19_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18261826_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24d4547c_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@486d1a96_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aa62a26_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77b64575_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14d9d90f_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e89ed09_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40f06358_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a995f3e_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e86ba03_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@393f8921_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bd2874a_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4346a3ff_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b964cf2_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7286de76_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18328715_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@627aa16b_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54fa7de5_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12a955c8_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a3a84c3_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b3fe31e_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53b26a0d_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37a5fd4c_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@267feda5_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7287d2d8_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b1ba583_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@de40ee4_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ddcee0c_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1785372a_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69811118_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6882322b_ARCHIVE_LOCATION">/run/media/vardakis/vardakis_ext/work/ofdm_design/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cb4d463_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5361a9db_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e948142_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ae9a146_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59f75e7c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7735c2c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/synchronizer_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="1ad99658"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="e4badda0"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1f7680e5"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="b7b9f1dd"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="05a4f2ee"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="5b3305d1"/>
