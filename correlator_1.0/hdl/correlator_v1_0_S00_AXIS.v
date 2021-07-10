@@ -81,6 +81,7 @@
 	wire [31 : 0] m_axis_dout_tdata;
     cmpy_0 cmpy_0_inst (
         .aclk(S_AXIS_ACLK),                              // input wire aclk
+        .aresetn(S_AXIS_ARESETN),
         .s_axis_a_tvalid(s_axis_a_tvalid),        // input wire s_axis_a_tvalid
         .s_axis_a_tready(s_axis_a_tready),        // output wire s_axis_a_tready
         .s_axis_a_tdata(s_axis_a_tdata),          // input wire [31 : 0] s_axis_a_tdata
@@ -117,12 +118,12 @@
     
     assign a = input_conj;
     assign S_AXIS_CONFIG_TREADY = config_ready;
-    assign S_AXIS_TREADY = !S_AXIS_CONFIG_TREADY && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY;
+    assign S_AXIS_TREADY = !S_AXIS_CONFIG_TREADY && s_axis_b_tready;
     assign M_AXIS_TVALID = m_axis_dout_tvalid;
     assign M_AXIS_TDATA[15 : 0] = (out[32 : 0] >> 15);
     assign M_AXIS_TDATA[31 : 16] = (out[72 : 40] >> 15);
-    assign s_axis_a_tvalid = !S_AXIS_CONFIG_TREADY && S_AXIS_TVALID && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY;
-    assign s_axis_b_tvalid = !S_AXIS_CONFIG_TREADY && S_AXIS_TVALID && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY;
+    assign s_axis_a_tvalid = !S_AXIS_CONFIG_TREADY;// && S_AXIS_TVALID && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY;
+    assign s_axis_b_tvalid = S_AXIS_TVALID;//!S_AXIS_CONFIG_TREADY && S_AXIS_TVALID && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY;
     
     
     
@@ -151,7 +152,7 @@ always @(posedge S_AXIS_ACLK) begin
         sync_word_count <= 0;
     end
     else begin
-        if(S_AXIS_TREADY && S_AXIS_TVALID && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY) begin
+        if(s_axis_a_tvalid && s_axis_a_tready) begin//S_AXIS_TREADY && S_AXIS_TVALID && s_axis_a_tready && s_axis_b_tready && M_AXIS_TREADY) begin
             sync_word_count = sync_word_count + 1;
         end
     end

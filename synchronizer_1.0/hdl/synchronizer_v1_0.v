@@ -55,6 +55,7 @@
 		output wire [15 : 0] mag_sq
 	);
 	
+	/* Might not be correct*/
 	assign s_axis_corr_tready = 1;
 	
 	wire signed [26:0] tmp_i; 
@@ -185,11 +186,11 @@
     assign tlast_recv = which_half != old_which_half;
 
     // Whenever a full frame is received we deassert data tready so that the peak detection
-    // can take place. If we are in a transmit state, we only deasser the data tready signal
+    // can take place. If we are in a transmit state, we only deassert the data tready signal
     // when the queue is full.
     assign stop = (((buffer_write % 1024) == 0) && (buffer_write != 0)) || wrapped;
-    assign s_axis_data_in_tready = ((s_axis_corr_tvalid) && ((~stop ||  (tlast_recv)))) || 
-                                    ((state_tx == TXING) && (data_in_queue < 2*1024 - 1));
+    assign s_axis_data_in_tready = ((state_tx != TXING) && (s_axis_corr_tvalid)) || 
+                                    ((state_tx == TXING) && (data_in_queue < 2*1024 - 1) );
 
     always @ (posedge s_axis_corr_aclk) begin
         if(!s_axis_corr_aresetn) begin
@@ -204,9 +205,9 @@
         else
         if(peak_search_abort == 1)
             peak_search_abort <= 0; 
-        if(s_axis_corr_tlast)
+        if(s_axis_corr_tlast && s_axis_corr_tvalid)
             which_half <= ~which_half;
-        if(s_axis_corr_tlast) begin
+        if(s_axis_corr_tlast && s_axis_corr_tvalid) begin
         if(notify_reset)
             tx_ended_ack1 = 0;
         case(state_peak_det) 
@@ -442,14 +443,8 @@
            // if(state != NOISE_EST) begin
                 if(old_which_half != which_half) begin
                     old_which_half <= which_half;
-                 //   tlast_recv <= 1;
                 end
-//                if(s_axis_corr_tlast)
-                    
-    
                 if(s_axis_data_in_tvalid && s_axis_data_in_tready) begin
-            //        if(tlast_recv)
-            //            tlast_recv <= 0;
                     if(wrapped)
                         wrapped <= 0;
                     if(buffer_write == 12'hfff)

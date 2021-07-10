@@ -55,6 +55,7 @@
 COMPONENT cmpy_0
   PORT (
     aclk : IN STD_LOGIC;
+    aresetn : IN STD_LOGIC;
     s_axis_a_tvalid : IN STD_LOGIC;
     s_axis_a_tready : OUT STD_LOGIC;
     s_axis_a_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -63,7 +64,7 @@ COMPONENT cmpy_0
     s_axis_b_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
     m_axis_dout_tready : IN STD_LOGIC;
-    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
+    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(79 DOWNTO 0)
   );
 END COMPONENT;
 -- COMP_TAG_END ------ End COMPONENT Declaration ------------
@@ -75,6 +76,7 @@ END COMPONENT;
 your_instance_name : cmpy_0
   PORT MAP (
     aclk => aclk,
+    aresetn => aresetn,
     s_axis_a_tvalid => s_axis_a_tvalid,
     s_axis_a_tready => s_axis_a_tready,
     s_axis_a_tdata => s_axis_a_tdata,

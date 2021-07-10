@@ -61,29 +61,26 @@ module fifo_impl # (
                         data_out <= 32'h00000000;
                     end
                 INSERT_NULL: begin
-                subc_cnt = subc_cnt + 1;
-                    if(((subc_cnt > 0) && (subc_cnt <= 400)) ||
-                    ((subc_cnt > 622) && (subc_cnt < 1023))) begin
+                subc_cnt <= subc_cnt + 1;
+                    if(((subc_cnt == 0) || (subc_cnt == 622))) begin
                         state <= READ_FIFO;
                         data_out <= fifo[read_addr[BIT_DEPTH - 1 : 0]];
                         read_addr <= read_addr + 1;
                         end
-                    else begin
-                            data_out <= 32'h00000000;
-                            state <= INSERT_NULL;
-                        end
+                    else if(subc_cnt == 1023)
+                        state <= IDLE;
+                    else 
+                        data_out <= 32'h00000000;
                     end
                 READ_FIFO:
-                    if((in_fifo == 0) && ~(subc_cnt == 1023))begin
+                    if((in_fifo == 0) && ~(subc_cnt == 1022))begin
                         state <= HALT;
                     end
                     else begin 
-                        subc_cnt = subc_cnt + 1;
-                        if((subc_cnt > 400) && (subc_cnt <= 622 ) || 
-                        (subc_cnt == 1023)) begin
+                        subc_cnt <= subc_cnt + 1;
+                        if((subc_cnt == 400) || (subc_cnt == 1022 )) begin
                             state <= INSERT_NULL;
                             data_out <= 32'h00000000;
-                            
                         end
                         else begin
                             data_out <= fifo[read_addr[BIT_DEPTH - 1 : 0]];
@@ -92,7 +89,7 @@ module fifo_impl # (
                     end
                 HALT:
                     if((in_fifo > 0)) begin
-                    subc_cnt = subc_cnt + 1;
+                    subc_cnt <= subc_cnt + 1;
                         if(((subc_cnt > 0) && (subc_cnt <= 400)) ||
                             ((subc_cnt > 622) && (subc_cnt < 1023))) begin
                             state <= READ_FIFO;

@@ -44,7 +44,6 @@
 	);
 	
 	reg [4 : 0] bit_index = 0;
-	reg [9 : 0] subc_cnt = 0;
 	reg [C_M00_AXIS_TDATA_WIDTH-1 : 0] byte_out = 0;
 	reg byte_ready = 0;
 	wire signed [15 : 0] i_data;
@@ -58,24 +57,19 @@
     always @(posedge s00_axis_aclk) begin
         if(!s00_axis_aresetn) begin
             byte_ready <= 0;
-            subc_cnt <= 0;
             bit_index <= 0;
         end
         if(byte_ready)
             byte_ready <= 0;
         if(s00_axis_tvalid && m00_axis_tready) begin
-            if(((subc_cnt > 0) && (subc_cnt <= 400)) ||
-                    ((subc_cnt > 622) && (subc_cnt < 1023))) begin
                 if(i_data >= 0)
                     byte_out[bit_index] <= 1;
                 else
                     byte_out[bit_index] <= 0;
-                bit_index = bit_index + 1;
-                if(bit_index == 0 && subc_cnt > 0)
+                bit_index <= bit_index + 1;
+                if(bit_index == 5'd31)
                     byte_ready <= 1;
             end
-            subc_cnt <= subc_cnt + 1;
-        end
     end
 
 	endmodule

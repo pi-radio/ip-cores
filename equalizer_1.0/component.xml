@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>xilinx.com</spirit:vendor>
+  <spirit:library>user</spirit:library>
+  <spirit:name>equalizer</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>M00_AXIS</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TSTRB</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tstrb</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TLAST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tlast</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>WIZ_DATA_WIDTH</spirit:name>
+          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.M00_AXIS.WIZ_DATA_WIDTH" spirit:choiceRef="choice_list_6fc15197">32</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>S00_AXIS</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TSTRB</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tstrb</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TLAST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tlast</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>WIZ_DATA_WIDTH</spirit:name>
+          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S00_AXIS.WIZ_DATA_WIDTH" spirit:choiceRef="choice_list_6fc15197">32</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>S00_AXIS_RST</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_RST.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>S00_AXIS_CLK</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_CLK.ASSOCIATED_BUSIF">S00_AXIS</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_CLK.ASSOCIATED_RESET">s00_axis_aresetn</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>M00_AXIS_RST</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M00_AXIS_RST.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>M00_AXIS_CLK</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M00_AXIS_CLK.ASSOCIATED_BUSIF">M00_AXIS</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M00_AXIS_CLK.ASSOCIATED_RESET">m00_axis_aresetn</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesis</spirit:name>
+        <spirit:displayName>Verilog Synthesis</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>equalizer_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_xilinx_com_ip_div_gen_5_1__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_xilinx_com_ip_cmpy_6_0__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>472c8603</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogbehavioralsimulation</spirit:name>
+        <spirit:displayName>Verilog Simulation</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>equalizer_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogbehavioralsimulation_xilinx_com_ip_div_gen_5_1__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogbehavioralsimulation_xilinx_com_ip_cmpy_6_0__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogbehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>472c8603</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_xpgui</spirit:name>
+        <spirit:displayName>UI Layout</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:xgui.ui</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_xpgui_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>4177a731</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>bd_tcl</spirit:name>
+        <spirit:displayName>Block Diagram</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:block.diagram</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>bd_tcl_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>45a2f450</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_testbench</spirit:name>
+        <spirit:displayName>Test Bench</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation.testbench</spirit:envIdentifier>
+        <spirit:modelName>test_equalizer</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_testbench_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>ef6efa17</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>m00_axis_aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_M00_AXIS_TDATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tstrb</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_M00_AXIS_TDATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tlast</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tstrb</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tlast</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>C_S00_AXIS_TDATA_WIDTH</spirit:name>
+        <spirit:displayName>C S00 AXIS TDATA WIDTH</spirit:displayName>
+        <spirit:description>AXI4Stream sink: Data Width</spirit:description>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH" spirit:order="3" spirit:rangeType="long">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_M00_AXIS_TDATA_WIDTH</spirit:name>
+        <spirit:displayName>C M00 AXIS TDATA WIDTH</spirit:displayName>
+        <spirit:description>Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.</spirit:description>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M00_AXIS_TDATA_WIDTH" spirit:order="4" spirit:rangeType="long">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_M00_AXIS_START_COUNT</spirit:name>
+        <spirit:displayName>C M00 AXIS START COUNT</spirit:displayName>
+        <spirit:description>Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.</spirit:description>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M00_AXIS_START_COUNT" spirit:order="5" spirit:minimum="1" spirit:rangeType="long">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>DATA_CARRIERS</spirit:name>
+        <spirit:displayName>Data Carriers</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.DATA_CARRIERS">800</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>choice_list_6fc15197</spirit:name>
+      <spirit:enumeration>32</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
+      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
+      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/div_gen_0/div_gen_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_divid_re/div_gen_0</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/cmpy_eq_0/cmpy_eq_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_mult/cmpy_eq_0</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/equalizer_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_942c0d8b</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_xilinx_com_ip_div_gen_5_1__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="div_gen" xilinx:version="5.1">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_xilinx_com_ip_cmpy_6_0__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="cmpy" xilinx:version="6.0">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/div_gen_0/div_gen_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_divid_re/div_gen_0</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/cmpy_eq_0/cmpy_eq_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_mult/cmpy_eq_0</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/equalizer_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogbehavioralsimulation_xilinx_com_ip_div_gen_5_1__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="div_gen" xilinx:version="5.1">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogbehavioralsimulation_xilinx_com_ip_cmpy_6_0__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="cmpy" xilinx:version="6.0">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>xgui/equalizer_v1_0.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_4177a731</spirit:userFileType>
+        <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>bd_tcl_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>bd/bd.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_testbench_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/test_equalizer.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>OFDM Equalizer</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>C_S00_AXIS_TDATA_WIDTH</spirit:name>
+      <spirit:displayName>C S00 AXIS TDATA WIDTH</spirit:displayName>
+      <spirit:description>AXI4Stream sink: Data Width</spirit:description>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXIS_TDATA_WIDTH" spirit:choiceRef="choice_list_6fc15197" spirit:order="3">32</spirit:value>
+      <spirit:vendorExtensions>
+        <xilinx:parameterInfo>
+          <xilinx:enablement>
+            <xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.C_S00_AXIS_TDATA_WIDTH">false</xilinx:isEnabled>
+          </xilinx:enablement>
+        </xilinx:parameterInfo>
+      </spirit:vendorExtensions>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_M00_AXIS_TDATA_WIDTH</spirit:name>
+      <spirit:displayName>C M00 AXIS TDATA WIDTH</spirit:displayName>
+      <spirit:description>Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.</spirit:description>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M00_AXIS_TDATA_WIDTH" spirit:choiceRef="choice_list_6fc15197" spirit:order="4">32</spirit:value>
+      <spirit:vendorExtensions>
+        <xilinx:parameterInfo>
+          <xilinx:enablement>
+            <xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.C_M00_AXIS_TDATA_WIDTH">false</xilinx:isEnabled>
+          </xilinx:enablement>
+        </xilinx:parameterInfo>
+      </spirit:vendorExtensions>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_M00_AXIS_START_COUNT</spirit:name>
+      <spirit:displayName>C M00 AXIS START COUNT</spirit:displayName>
+      <spirit:description>Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.</spirit:description>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M00_AXIS_START_COUNT" spirit:order="5" spirit:minimum="1" spirit:rangeType="long">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">equalizer_v1_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>DATA_CARRIERS</spirit:name>
+      <spirit:displayName>Data Carriers</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DATA_CARRIERS">800</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:supportedFamilies>
+        <xilinx:family xilinx:lifeCycle="Pre-Production">zynquplus</xilinx:family>
+      </xilinx:supportedFamilies>
+      <xilinx:taxonomies>
+        <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
+      </xilinx:taxonomies>
+      <xilinx:displayName>equalizer_v1.0</xilinx:displayName>
+      <xilinx:coreRevision>31</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2021-07-05T17:01:47Z</xilinx:coreCreationDateTime>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31ae0763_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68c20179_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d5d9cba_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@486f6d75_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@575ddb0f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68d993e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6daf31a0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3271c556_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d321f7e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b44fe54_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ba7e72d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ddffc59_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44c4a576_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4029350c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30bb0a29_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11281762_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b9935e3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ba99273_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c0e4b50_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63483d01_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e7ff679_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@273d1c94_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f826da7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21dceb46_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33a744f7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@252c7203_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13ec4f2d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b4fd4a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bfb7870_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71e7b8f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f7e9846_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@428e5500_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63ce6441_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@409f851_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d28ce3e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f107a3a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ffc3a4e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39a716b9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e567feb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aba4721_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@481c8dc6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b496bf1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@604e33d7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40e9e87b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75073fcb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ea4053_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@184ab31d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cc873e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37fd22e5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b42e7b4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@95dac19_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f2a7757_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@747aef1a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6485e9e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c8a0a11_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@626c5cd3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ebe9b03_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c62433a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@266dfe1e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48c2e900_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@267ddb53_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c745315_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d4a878a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@594db754_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@992ae68_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f08f699_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@217e8cd7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16713053_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27e0a7c9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d1651e2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5284faec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a98a04d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e8f51ec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66eef358_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@649d977c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22118868_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35f9625e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@227d3581_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47b1ae1d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4162e8db_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12c035fc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aa76358_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76dfda93_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ddf4a52_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@335c5a03_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@394b316_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cd668e6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a35807b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@469cc853_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c65ee06_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c25085e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@739ef3df_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43a36626_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7adcd6b1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76b09a9f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a3d633d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a31ca9e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39e674a3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32f5ff07_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a798191_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26d0af70_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49e7790_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d6e422d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16e5f620_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@216da647_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@108d8a9f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40dffd09_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@94a15a8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d38e707_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cddcacf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cc16fac_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cdf1e5c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ba1f30b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@232553fa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c17912c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44bb4e50_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c9accab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@709eba7d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12902ce2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@152bc061_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65270e60_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c9b042d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a02788a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40e5e80_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a55055_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b4d1bae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7be8d6a3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@415070d1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bebd068_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56c72745_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@178ab9e4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ccb4d63_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3618ff9e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36ec0b7e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@413a858f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a48a8a2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d3eaaab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2254c789_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@585dab07_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49b1db8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57deeef4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cd16b7c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48c2df9c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@145e1af8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c97d1ef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d7b9673_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@288eef1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6422bc4b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49edbb26_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@490e44a4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54f7d012_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@405a3f05_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8dabea9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@684c7069_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cb52038_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e41adaa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7494b78f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58070969_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57524630_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62ef0099_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@358c3aa4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f665f90_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@577df267_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21de46d5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b9eee70_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5470a3aa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@762c3954_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1642dc75_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7182c240_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41f4d250_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5746d924_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28ecbdcd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@155858d1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d3e1b64_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ba8791f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56a9dfec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@727bc5e5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e6d1fe3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@116e35bc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@795e02da_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ba6d54b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47c42c83_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7628d441_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76d4c3e1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52bf14d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@359d7849_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30a5e000_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dc6ecad_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@734969e3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76a44350_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59632014_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c9d06be_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ec97d1f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74a8a191_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2631c0d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bda2af8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bfa349f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e6a4819_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c85e0e4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f446faa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c881348_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ad2747f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e73d466_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6dd16da6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@623017ca_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7da76dc1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@247e8370_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38c5792a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f015b79_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4763b7c2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6433661f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63ad5a1a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18dca6f8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cb9fa6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ee99393_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16579e43_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@402b79c7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c79d6ac_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65056a5c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16afe209_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70fadc06_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5017dff5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37a3ab25_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@165408a1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ab91246_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@992f07c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4201e33a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14da8d94_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a8e5c38_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26d9013e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39ee2766_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1effcfc7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ce06b51_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b78acbc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a0b110_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@114a51a3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5420df19_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60bd0834_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@570cd234_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@305aa887_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6aa1a505_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27745fe5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a8f500a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bed2f85_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@368981e0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4062b72b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8f0bc8c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73e9f0f3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@111a7cf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39a5af60_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5307e7d7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a03eeed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@298a26a3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@367078d7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@601388b7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49b66272_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79a06fd6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3204249f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@367726d4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7584478b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@523f2a1f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23875579_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22a66350_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@796351d9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60712f84_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55c1d5fa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4efe782f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dc317ae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@562e3e6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a1489a2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25f676e6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e2f5d20_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f9035e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ed68429_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@296ea6bf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bbbbfec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@151aa13c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@470d2504_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@659c1ba9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ee67bf7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@121d0bb2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c5aff2a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@700d75ea_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@355bee6d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f242502_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a11db06_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a764f69_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d5b398a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78b2a39f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b0322a1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e51f35d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2edc1d28_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72db78d1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68210b46_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64c8230c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@677c8209_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c2df9e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a411505_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@149843ed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4405380f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@548404be_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@341bdb61_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13fe9ac9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6df75c1a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f30154a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5949ba01_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40410183_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22e96aed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@538d3a29_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@454d444e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78f02d0d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26670b5e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a853754_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e053643_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24f4f906_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27b92398_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11b671e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e6c303f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@177ae709_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ca97861_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@691dda07_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@824b5da_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@487cebde_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38cdb8aa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dc7fe9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bf0b3c2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b8be81b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35c1c179_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@213300f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@575ea080_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a8d882_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1df07f0a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42296b97_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f63b6c8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a578bbb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34730710_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@270df83a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e4e4789_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@178232f0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70b9e4aa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@454ee8d7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36dd6c7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bf0bf2b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68cf8dd3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67058471_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f9b9b62_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@122c0edd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e047176_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4960d2b5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@92aa97d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@159f6b09_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7aae61bb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ceffb5e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b14a5c9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b1fd1d8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15dfaebf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6eea5c17_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17a0a770_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c02aa15_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15d1469f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d8f6a42_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32877f9b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b364165_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fbef72e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e73a07f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23a8e9b3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dd138c1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f45826c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2aa263c9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52253235_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b8019ed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44c43fb4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51515b13_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@676dd2b8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@263f3cd7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62fdec0a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b378de5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a9f782b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ecd92c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51feae08_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1226933f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53d74c13_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6dab9a69_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49b6909d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12d5d7ab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56a0a624_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7399a931_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a406506_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f4cdbed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5494968_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d7d0ca6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aa3a237_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6006555b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@656bb9a7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c6fd596_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ae5c370_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d7aeb5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@95f37ae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c2264e8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@679da83_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c0c9e37_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cee2fa3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10e39e0d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@eb24db1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67a75720_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@420a4841_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7422c967_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60ff8efe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53576990_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64f5601_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dc4d43a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e059816_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a85ff6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52693fd8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@263cee59_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33dc8e8e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d316358_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c3436f3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66d5088e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29f6df66_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d45ded4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22608972_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40e68e1b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78f7fffa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46a99bb5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@171eb7c5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63a08889_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c809c34_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e4ca32e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3322244c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79267580_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29ee2972_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65518d2d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f01b979_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aa9907e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ad00347_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@411ea2c4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14d3fe77_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fbcfc48_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@719f4c9f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21acfa17_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65458c57_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30172483_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@545879d2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bc8975e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38497c6e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c135abb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@137d16fc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b2efc92_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d9a0550_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72fff24c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d1e2c8f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a1f33e5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a64aa90_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64b57b47_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78d6e6ef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@348f1d90_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7435d2c5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13d67c7f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75cfd991_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@285974fb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31ed2cdf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@611d561b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f4cbaa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49ecb1eb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59582fca_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a459861_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b42b7ea_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@452c477_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3be4b458_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e441a7a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c8a2245_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13383c30_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eeb9876_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76762c77_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14b0d31f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31fcccf7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7938752_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b1f2217_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e22a485_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c3c1841_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d21e4ae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e8a171e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2171f357_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75c10b06_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66ed3591_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f655df1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39ce7cae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@296f79f1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2133bfe0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46e6728d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@322bf1f8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@389629cc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18ee1c4c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63d312eb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f79c749_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2393d7ec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19d591fe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34a99005_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39600918_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ba5dd88_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b6275c1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@320a95ce_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58b7784f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6658c0b4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ffba968_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@614d2e76_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11954801_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4724ee6c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68754520_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@631cf308_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@571f5ba8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a78c414_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b5920a1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46e4a0c1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78d22af3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@130e274d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c9c108_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1139992d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@272a6028_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e433230_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4861e5f8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3aed84f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13968689_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a873545_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67add8e9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68dc7fcc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b47c1cd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@502cb699_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a7e11bf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76af7d3c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1286840c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7905c5f3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@751a4efa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56869e6e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22ad3ee8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50dff136_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d4b1c7f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@748d2512_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@385d2b8c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64244773_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a9fe325_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3469ea95_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48824256_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@be8781b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4137a3b9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33a490e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@466174d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fcd62_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d126222_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b7950f4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c59f211_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@593d6dd8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ef01032_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68cb1334_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@133b099_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39153999_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53b4328f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3550bb28_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@734ba19f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@164c3fdc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dc9e8a1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48768e7e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50e0482c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b9f6a6c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41a54d85_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2025800d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78e6e0a8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2032437_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18812091_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b3520ea_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c99fc63_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@301b157a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6772d3e1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@270c4dbb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4077110f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36c5de9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52475cc7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@312b004e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4aabe9ab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d1b6673_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7978d94c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40f125f5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cea0bef_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35214ac0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f47989e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1625f23f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5528656f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cd7abfe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a291ad2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1acb37ce_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1737b0fa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@272b3b3b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c99e04b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b13e74e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@565f8fb3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ffcf740_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f29e394_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4689d22_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5267c26d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74d7f2e3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d310026_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@325d7307_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33803ca4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e80222_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18c8aed3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c9ae35a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dca5fb3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30bac50b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@627c201e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6eb86a88_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@311fb553_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c1d1620_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ce1e9c1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70213bf1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5183a506_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b38abba_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2649b785_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6392283a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@335322d8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e196c2e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11af4dd2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@947492e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ef881ce_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@382f39df_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3221e156_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6385525f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b84dcad_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f0fb448_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3325e615_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@92b575a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8f499b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64b1d5d6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@296332b3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fe5d557_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3dde6732_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a1b7f74_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@480b1cc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e7636de_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@244bed3b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f045f3b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fe54229_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11d59f19_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e494b7f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5145582a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@83ac1af_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ebaeda9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@686a42d3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2af5ad3c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b377ea5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@236d7b30_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@490a263c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@501b1949_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fd6a800_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@663b7510_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c2845fe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ea6260d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66c096f3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5eaae83_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@340461e7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aec3f0a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ffdcd0f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c0f9bf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28b5d07a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56c2549e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63cba6bc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1174ed33_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d7afcfb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c277fe0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45db6cf6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a55091f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ca602fb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11ea7dfd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7902da8d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@660fd9d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18b92ed8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@757dc55c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a00d38b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13fd0384_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@516fb6e0_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b171a9e_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c3860ff_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c7f8e04_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e4b34f9_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51991119_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4924d6d3_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28a99667_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@428e2c06_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@142d1237_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a0db5fb_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4061fe1e_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f2cfd3f_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bad7968_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@488be78a_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@850e85c_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a138f10_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@144e2799_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7913eb75_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@610f9d49_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1de11cd9_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4355b962_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34e536f4_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a62c4e1_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cc80d7e_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10246c52_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12c07725_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28f612c8_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7548821b_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b071634_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d9410d8_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fe0adfa_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46e5d232_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31c8b784_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@694b8faf_ARCHIVE_LOCATION">/mnt/evo/projects/ip_repo/equalizer_1.0</xilinx:tag>
+      </xilinx:tags>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="ba28b070"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="be6f6517"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="16d85e4b"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="696afb0d"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="5d9a1aac"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>

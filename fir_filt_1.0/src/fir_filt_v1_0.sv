@@ -65,8 +65,6 @@
 		input wire  m00_axis_tready,
 		output wire [C_M00_AXIS_TDATA_WIDTH-1 : 0] accum
 	);
-	
-
     
     wire [31 : 0] data[0 : NUM_TAPS ];
     wire [31 : 0] accumulator [0 : NUM_TAPS ];
@@ -75,36 +73,63 @@
     
     wire [31 : 0] mult[0 : NUM_TAPS ];
     wire mult_0_out_valid;
-    wire [72 : 0] mult_data_out;
-    reg [31 : 0] buffer [0 : 7];
+    wire [79 : 0] mult_data_out;
+
     wire signed [C_S00_AXIS_TDATA_WIDTH/2 - 1 : 0] mult_real;
     wire signed [C_S00_AXIS_TDATA_WIDTH/2 - 1 : 0] mult_imag;
     
-    wire [NUM_TAPS : 0] mult_valid;
+    wire fifo_s_axis_tvalid, fifo_s_axis_tready, fifo_m_axis_tready;
+    wire [3 : 0] fifo_m_axis_tuser, fifo_s_axis_tuser;
+    wire cmpy_ready;
+    wire [NUM_TAPS : 0] mult_valid ;
     
+    wire [31 : 0] fifo_data_in;
+    reg init_zero_in_valid = 0;
+    reg init = 1;
+    
+    
+    assign fifo_data_in = (init) ? 32'h00000000 : s00_axis_tdata;
+    
+    always @(posedge s00_axi_aclk) begin
+        if(s00_axis_aresetn)
+            init_zero_in_valid <= 0;
+        else
+            if(fifo_s_axis_tready) begin
+                init_zero_in_valid <= 1;
+                init <= 0;    
+            end
+            if(init_zero_in_valid == 1)
+                init_zero_in_valid <= 0;    
+    end
+    
+    
+    
+ fifo_generator_0 fifo1 (
+      .s_aclk(s00_axis_aclk),                // input wire s_aclk
+      .s_aresetn(s00_axis_aresetn),          // input wire s_aresetn
+      .s_axis_tvalid(fifo_s_axis_tvalid),  // input wire s_axis_tvalid
+      .s_axis_tready(fifo_s_axis_tready),  // output wire s_axis_tready
+      .s_axis_tdata(fifo_data_in),    // input wire [31 : 0] s_axis_tdata
+      .s_axis_tuser(fifo_s_axis_tuser),    // input wire [3 : 0] s_axis_tuser
+      .m_axis_tvalid(fifo_m_axis_tvalid),  // output wire m_axis_tvalid
+      .m_axis_tready(fifo_m_axis_tready),  // input wire m_axis_tready
+      .m_axis_tdata(data[0]),    // output wire [31 : 0] m_axis_tdata
+      .m_axis_tuser(fifo_m_axis_tuser)    // output wire [3 : 0] m_axis_tuser
+);
+    assign fifo_m_axis_tready = mult_0_out_valid && ready[0];
+    assign fifo_s_axis_tvalid = (init) ? init_zero_in_valid : (s00_axis_tvalid && cmpy_ready);
     assign mult_real = mult_data_out[32 : 0] >> 15;
     assign mult_imag = mult_data_out[72 : 40] >> 15;
     
-    assign data[0] = buffer[7];
-//    assign s00_axis_tready = ready[0];
+
+    assign s00_axis_tready = (init) ? 0 : (cmpy_ready && fifo_s_axis_tready);
     assign accumulator[0] = {mult_imag, mult_real};
     assign valid[0] = mult_0_out_valid;
     
     assign m00_axis_tdata = accumulator[NUM_TAPS ];
     assign ready[NUM_TAPS ] = m00_axis_tready;
     assign m00_axis_tvalid = valid[NUM_TAPS ];
-    assign accum = data[NUM_TAPS];
-    
-    integer k;
-    always @ (posedge s00_axi_aclk) begin
-        if(s00_axis_tvalid && s00_axis_tready) begin
-            buffer[0] <= s00_axis_tdata;
-            for(k = 1; k < 8; k++) begin
-                buffer[k] <= buffer[k - 1];
-            end
-        end
-    end
-    
+
     
     fir_filt_v1_0_S00_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
@@ -136,14 +161,14 @@
 		.multiplier_valid(mult_valid)
 	);
 	
-    cmpy_0 cmpy_0_inst (
+    fir_cmpy cmpy_0_inst (
         .aclk(s00_axis_aclk),                              // input wire aclk
         .aresetn(s00_axi_aresetn),
         .s_axis_a_tvalid(mult_valid[0]),                      // input wire s_axis_a_tvalid
         .s_axis_a_tready(s_axis_a_tready),        // output wire s_axis_a_tready
         .s_axis_a_tdata(mult[0]),          // input wire [31 : 0] s_axis_a_tdata
-        .s_axis_b_tvalid(s00_axis_tvalid),        // input wire s_axis_b_tvalid
-        .s_axis_b_tready(s00_axis_tready),        // output wire s_axis_b_tready
+        .s_axis_b_tvalid(s00_axis_tvalid && fifo_s_axis_tready),        // input wire s_axis_b_tvalid
+        .s_axis_b_tready(cmpy_ready),        // output wire s_axis_b_tready
         .s_axis_b_tdata(s00_axis_tdata),
         .m_axis_dout_tvalid(mult_0_out_valid),  // output wire m_axis_dout_tvalid
         .m_axis_dout_tready(ready[0]),  // input wire m_axis_dout_tready
@@ -159,7 +184,7 @@
                 .data(data[i]),
                 .acc_in(accumulator[i]),
                 .mult(mult[i + 1]),
-                .multiplier_valid(mult_valid[i]),
+                .multiplier_valid(mult_valid[i + 1]),
                 .acc_out(accumulator[i + 1]),
                 .data_out(data[i + 1]),
                 .in_valid(valid[i]),

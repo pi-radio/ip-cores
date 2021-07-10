@@ -6,15 +6,22 @@
 
 #define SYMBOL_SIZE              1280
 #define NUM_FRAMES               2
-#define SKIP_SAMPS               (SYMBOL_SIZE * 6 - 143)
+#define SKIP_SAMPS               (SYMBOL_SIZE * 4 + 147)
 #define DATA_RX_INPUT_LEN        (NUM_FRAMES * 10 * SYMBOL_SIZE * 4 - SKIP_SAMPS * 4)
+#define DATA_FIR_LOG             (NUM_FRAMES * 10 * SYMBOL_SIZE * 4)
+#define DATA_EQ_LOG              (9 * 800 * 4)
 
 #define DATA_OUT_LEN             ((9 * 100) * (NUM_FRAMES - 1))
 #define DATA_LOGGED_LEN          ((10 * 100) * (NUM_FRAMES))
 
+#define FREQ_OFFSET              0x0005
+
 
 uint8_t data[DATA_OUT_LEN];
 uint8_t data_log[DATA_LOGGED_LEN];
+uint8_t data_fir[DATA_FIR_LOG];
+uint8_t data_freq_off[DATA_FIR_LOG];
+uint8_t data_equalizer[DATA_EQ_LOG];
 
 #define FFT_SIZE                 1024
 #define NUM_TAPS                 10
@@ -32,6 +39,9 @@ uint8_t data_log[DATA_LOGGED_LEN];
 #define TAPS_OFFSET              (LOGGER_RX_OFFSET + DATA_LOGGED_LEN)
 #define ZEROS_OFFSET             (TAPS_OFFSET + TAPS_SIZE)
 #define CP_LEN_OFFSET            (ZEROS_OFFSET + 16)
+#define LOGGER_FIR_OFFSET        (CP_LEN_OFFSET + 32)
+#define LOGGER_FREQ_OFF          (LOGGER_FIR_OFFSET + DATA_FIR_LOG)
+#define LOGGER_EQ_OFFSET         (LOGGER_FREQ_OFF + DATA_FIR_LOG)
 
 uint8_t sync_tmp[SYNC_MOD_BYTES];
 uint32_t taps[NUM_TAPS];
@@ -144,7 +154,8 @@ void config_rx_dma(void* base, uint32_t dst_addr, uint32_t length){
 int main() {
 	int memfd;
 	void *packet_gen_base, *capt_syst_base, *ddr_rx_base, *mod_base,
-	*capt_syst_delay_base, *capt_syst_logger_base, *fir_filt_base; // AXI MM ifaces
+	*chann_emu_base, *capt_syst_delay_base, *capt_syst_logger_base, *fir_filt_base,
+	*capt_syst_fir_logger_base, *capt_syst_eq_logger_base; // AXI MM ifaces
 
 	void *reset;
 
@@ -155,22 +166,28 @@ int main() {
 	void *dma_correlator_base = NULL;  // DMA config for sync word (complex symbols) in correlator
 	void *dma_pack_gen_base = NULL;    // DMA config for sync word (bit level) in packet generator
 	void *dma_logger_base = NULL;      // DMA for logging output of TX modulator
+	void *dma_fir_logger_base = NULL;      // DMA for logging output of FIR
+	void *dma_freq_off_logger_base = NULL;      // DMA for logging output of frequency offset
+	void *dma_eq_logger_base = NULL;      // DMA for logging output of equalizer
 
 
 	memset(taps, 0, TAPS_SIZE);
 	taps[0] = 0x00007fff;
-	taps[1] = 0x00000000;
+	taps[1] = 0x00004000;
 	taps[2] = 0x00000000;
 	taps[3] = 0x00000000;
 	taps[4] = 0x00000000;
-	taps[5] = 0x00006000;
+	taps[5] = 0x00000000;
 	taps[6] = 0x00000000;
 	taps[7] = 0x00000000;
 	taps[8] = 0x00000000;
 	taps[9] = 0x00000000;
-	int sockfd;
+	taps[10] = 0x00000000;
+	int sockfd,  sock_tx_fd, sock_tx_fd2, sock_tx_fd3;
 
 	struct sockaddr_in servaddr, cliaddr;
+
+	struct sockaddr_in servaddr_tx, cliaddr_tx;
 
 	socklen_t len;
 	len = sizeof(cliaddr);
@@ -200,6 +217,24 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
+	sock_tx_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock_tx_fd == -1) {
+        printf("TX socket creation failed...\n");
+        exit(0);
+    }
+
+	sock_tx_fd2 = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock_tx_fd2 == -1) {
+        printf("TX socket creation failed...\n");
+        exit(0);
+    }
+
+	sock_tx_fd3 = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock_tx_fd3 == -1) {
+        printf("TX socket creation failed...\n");
+        exit(0);
+    }
+
 	memfd = open("/dev/mem", O_RDWR | O_SYNC);
 	if (memfd == -1) {
 		printf("Can't open /dev/mem.\n");
@@ -222,7 +257,13 @@ int main() {
 #if INIT == 1
 	map_device(&packet_gen_base, memfd, XPAR_PACKET_GEN_0_S00_AXI_BASEADDR, MAP_SIZE,
 			MAP_MASK, 4);
+	map_device(&chann_emu_base, memfd, XPAR_CHANNEL_EMULATOR_0_S00_AXI_BASEADDR, MAP_SIZE,
+			MAP_MASK, 4);
 	map_device(&capt_syst_base, memfd, XPAR_CAPTURE_SYSTEM_0_S00_AXI_BASEADDR, MAP_SIZE,
+			MAP_MASK, 4);
+	map_device(&capt_syst_fir_logger_base, memfd, XPAR_CAPTURE_SYSTEM_3_S00_AXI_BASEADDR, MAP_SIZE,
+			MAP_MASK, 4);
+	map_device(&capt_syst_eq_logger_base, memfd, XPAR_CAPTURE_SYSTEM_4_S00_AXI_BASEADDR, MAP_SIZE,
 			MAP_MASK, 4);
 	map_device(&mod_base, memfd, XPAR_MODULATOR_0_S00_AXI_BASEADDR, MAP_SIZE,
 			MAP_MASK, 4);
@@ -254,10 +295,16 @@ int main() {
 			MAP_MASK, 0);
 	map_device(&dma_logger_base, memfd, XPAR_AXIDMA_5_BASEADDR, MAP_SIZE,
 				MAP_MASK, 0);
+	map_device(&dma_fir_logger_base, memfd, XPAR_AXIDMA_6_BASEADDR, MAP_SIZE,
+				MAP_MASK, 0);
+	map_device(&dma_freq_off_logger_base, memfd, XPAR_AXIDMA_7_BASEADDR, MAP_SIZE,
+				MAP_MASK, 0);
+	map_device(&dma_eq_logger_base, memfd, XPAR_AXIDMA_8_BASEADDR, MAP_SIZE,
+				MAP_MASK, 0);
 
 	/* Configure FIR filter taps */
 
-	for(int i = 0; i< NUM_TAPS; i++){
+	for(int i = 0; i<= NUM_TAPS; i++){
 		write_to_base(fir_filt_base + (i * 4), taps[i]);
 	}
 
@@ -271,7 +318,7 @@ int main() {
 	memset(ddr_rx_base + ZEROS_OFFSET, 0x0, 4 );
 	reset_tx_dma_engine(dma_ifft_rx_base);
 	config_tx_dma(dma_ifft_rx_base,DDR_BASE_ADDRESS + ZEROS_OFFSET, 4);
-
+	uint8_t pack[SYNC_MOD_BYTES];
 
 	/*Receive sync word unmodulated from host for packet generator config*/
 #if INIT==1
@@ -287,6 +334,8 @@ int main() {
 		printf("Wrong number of bytes for configuring packet generator\n");
 		exit(0);
 	}
+	memset(pack, 0, SYNC_MOD_BYTES);
+
 
 	/*Receive sync word modulated from host for correlator config*/
 
@@ -306,6 +355,7 @@ int main() {
 	else{
 		printf("Wrong number of bytes for configuring correlator\n");
 	}
+	memcpy(pack, ddr_rx_base + SYNC_MOD_OFFSET, SYNC_MOD_BYTES);
 #endif
 
 	write_to_base(capt_syst_delay_base + 0x04, SKIP_SAMPS);
@@ -317,18 +367,33 @@ int main() {
 
 	write_to_base(capt_syst_logger_base, DATA_LOGGED_LEN / 4);
 
-//	/* Config logger DMA */
+	write_to_base(capt_syst_fir_logger_base, DATA_FIR_LOG / 4);
+
+	write_to_base(capt_syst_eq_logger_base, DATA_EQ_LOG / 4);
+
+//	/* Config logger DMAs */
 	reset_rx_dma_engine(dma_logger_base);
 	config_rx_dma(dma_logger_base,DDR_BASE_ADDRESS + LOGGER_RX_OFFSET, DATA_LOGGED_LEN );
+
+	//	/* Config logger DMA */
+	reset_rx_dma_engine(dma_fir_logger_base);
+	config_rx_dma(dma_fir_logger_base,DDR_BASE_ADDRESS + LOGGER_FIR_OFFSET, DATA_FIR_LOG );
+
+	reset_rx_dma_engine(dma_freq_off_logger_base);
+	config_rx_dma(dma_freq_off_logger_base, DDR_BASE_ADDRESS + LOGGER_FREQ_OFF, DATA_FIR_LOG);
+
+	reset_rx_dma_engine(dma_eq_logger_base);
+	config_rx_dma(dma_eq_logger_base, DDR_BASE_ADDRESS + LOGGER_EQ_OFFSET, DATA_EQ_LOG);
 
 	/* Config PL to PS DMA engine */
 	reset_rx_dma_engine(dma_pl_ps_base);
 	config_rx_dma(dma_pl_ps_base,DDR_BASE_ADDRESS + OUTPUT_RX_OFFSET, DATA_OUT_LEN);
 
-
+	write_to_base(chann_emu_base, FREQ_OFFSET);
 
 #if INIT==1
 	/* Start packet generator */
+	write_to_base(packet_gen_base + 0x04, 0);
 	write_to_base(packet_gen_base, 1);
 
 	//usleep(100);
@@ -349,15 +414,11 @@ int main() {
 	memcpy(data_log, ddr_rx_base + LOGGER_RX_OFFSET, txed_log);
 
 	uint32_t correct = 0;
-	uint32_t off[500];
+
 	uint32_t off_cnt = 0;
 	for (int i = 0; i < txed; i++) {
 		if (data[i] == data_log[i + 1100])
 			correct++;
-		else {
-			off[off_cnt] = i;
-			off_cnt++;
-		}
 	}
 	int success = 0;
 
@@ -365,23 +426,83 @@ int main() {
 		success = 1;
 
 
-	cliaddr.sin_port = htons(TX_PORT);
-	size_t total_data =  txed;
-	int32_t count = total_data, tosend = 1000;
-	while(count >= 0){
-		sleep(1);
-		sendto(sockfd, data_log + (total_data - count), tosend, 0, (const struct sockaddr *) &cliaddr,
-						       sizeof(cliaddr));
-		count -= tosend;
-		if(count < tosend){
-			tosend = count;
-			sleep(1);
-			sendto(sockfd, data_log + (total_data - tosend), tosend, 0, (const struct sockaddr *) &cliaddr,
-							       sizeof(cliaddr));
-			break;
-		}
+	uint32_t fir_log = read_from_base(dma_fir_logger_base + XAXIDMA_RX_OFFSET +
+		XAXIDMA_BUFFLEN_OFFSET);
+
+	memcpy(data_fir, ddr_rx_base + LOGGER_FIR_OFFSET, fir_log);
+
+	uint32_t freq_off_log = read_from_base(dma_freq_off_logger_base + XAXIDMA_RX_OFFSET +
+		XAXIDMA_BUFFLEN_OFFSET);
+
+	memcpy(data_freq_off, ddr_rx_base + LOGGER_FREQ_OFF, freq_off_log);
+
+	uint32_t eq_log = read_from_base(dma_eq_logger_base + XAXIDMA_RX_OFFSET +
+		XAXIDMA_BUFFLEN_OFFSET);
+
+	memcpy(data_equalizer, ddr_rx_base + LOGGER_EQ_OFFSET, eq_log);
+
+	servaddr_tx.sin_family    = AF_INET; // IPv4
+	servaddr_tx.sin_addr.s_addr = cliaddr.sin_addr.s_addr;
+	servaddr_tx.sin_port = htons(TX_PORT);
+	if (connect(sock_tx_fd, (struct sockaddr*)&servaddr_tx, sizeof(servaddr_tx)) != 0) {
+	        printf("connection with the server failed...\n");
+	        //exit(0);
 	}
 
 
+	size_t total_data =  fir_log;
+	int32_t count = total_data, tosend = 1000;
+	while(count >= 0){
+		send(sock_tx_fd, data_fir + (total_data - count), tosend, 0);
+		count -= tosend;
+		if(count < tosend){
+			tosend = count;
+			send(sock_tx_fd, data_fir + (total_data - tosend), tosend, 0);
+			break;
+		}
+	}
+	close(sock_tx_fd);
 
+
+	servaddr_tx.sin_family    = AF_INET; // IPv4
+	servaddr_tx.sin_addr.s_addr = cliaddr.sin_addr.s_addr;
+	servaddr_tx.sin_port = htons(TX_PORT + 1);
+	if (connect(sock_tx_fd2, (struct sockaddr*)&servaddr_tx, sizeof(servaddr_tx)) != 0) {
+	        printf("connection with the server failed...\n");
+	        //exit(0);
+	}
+
+	 total_data =  freq_off_log;
+	 count = total_data, tosend = 1000;
+	while(count >= 0){
+		send(sock_tx_fd2, data_freq_off + (total_data - count), tosend, 0);
+		count -= tosend;
+		if(count < tosend){
+			tosend = count;
+			send(sock_tx_fd2, data_freq_off + (total_data - tosend), tosend, 0);
+			break;
+		}
+	}
+	close(sock_tx_fd2);
+
+	servaddr_tx.sin_family    = AF_INET; // IPv4
+	servaddr_tx.sin_addr.s_addr = cliaddr.sin_addr.s_addr;
+	servaddr_tx.sin_port = htons(TX_PORT + 2);
+	if (connect(sock_tx_fd3, (struct sockaddr*)&servaddr_tx, sizeof(servaddr_tx)) != 0) {
+	        printf("connection with the server failed...\n");
+	        //exit(0);
+	}
+
+	 total_data =  eq_log;
+	 count = total_data, tosend = 1000;
+	while(count >= 0){
+		send(sock_tx_fd3, data_equalizer + (total_data - count), tosend, 0);
+		count -= tosend;
+		if(count < tosend){
+			tosend = count;
+			send(sock_tx_fd3, data_equalizer + (total_data - tosend), tosend, 0);
+			break;
+		}
+	}
+	close(sock_tx_fd3);
 }

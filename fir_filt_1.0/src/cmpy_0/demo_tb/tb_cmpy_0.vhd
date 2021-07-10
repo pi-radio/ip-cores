@@ -91,6 +91,7 @@ architecture tb of tb_cmpy_0 is
 
   -- General inputs
   signal aclk               : std_logic := '0';  -- the master clock
+  signal aresetn            : std_logic := '1';  -- synchronous active low reset, overrides aclken
 
   -- Slave channel A inputs
   signal s_axis_a_tvalid    : std_logic := '0';  -- TVALID for channel A
@@ -113,7 +114,7 @@ architecture tb of tb_cmpy_0 is
 
   -- Master channel DOUT outputs
   signal m_axis_dout_tvalid : std_logic := '0';  -- TVALID for channel DOUT
-  signal m_axis_dout_tdata  : std_logic_vector(63 downto 0) := (others => '0');  -- TDATA for channel DOUT
+  signal m_axis_dout_tdata  : std_logic_vector(79 downto 0) := (others => '0');  -- TDATA for channel DOUT
 
   -----------------------------------------------------------------------
   -- Aliases for AXI channel TDATA fields
@@ -125,8 +126,8 @@ architecture tb of tb_cmpy_0 is
   signal s_axis_a_tdata_imag     : std_logic_vector(15 downto 0) := (others => '0');
   signal s_axis_b_tdata_real     : std_logic_vector(15 downto 0) := (others => '0');
   signal s_axis_b_tdata_imag     : std_logic_vector(15 downto 0) := (others => '0');
-  signal m_axis_dout_tdata_real  : std_logic_vector(31 downto 0) := (others => '0');
-  signal m_axis_dout_tdata_imag  : std_logic_vector(31 downto 0) := (others => '0');
+  signal m_axis_dout_tdata_real  : std_logic_vector(32 downto 0) := (others => '0');
+  signal m_axis_dout_tdata_imag  : std_logic_vector(32 downto 0) := (others => '0');
 
   -----------------------------------------------------------------------
   -- Testbench signals
@@ -219,6 +220,7 @@ begin
   dut : entity work.cmpy_0
     port map (
       aclk                => aclk,
+      aresetn             => aresetn,
       s_axis_a_tvalid     => s_axis_a_tvalid,
       s_axis_a_tready     => s_axis_a_tready,
       s_axis_a_tdata      => s_axis_a_tdata,
@@ -252,6 +254,26 @@ begin
   end process clock_gen;
 
   -----------------------------------------------------------------------
+  -- Generate reset
+  -----------------------------------------------------------------------
+
+  -- Reset the core in cycle 200. Hold the reset active for 2 clock
+  -- cycles, as recommended in the Complex Multiplier Datasheet.
+  aresetn_gen : process
+  begin
+    aresetn <= '1';  -- inactive (aresetn is active low)
+    -- Drive reset T_HOLD time after rising edge of clock
+    wait until rising_edge(aclk);
+    wait for T_HOLD;
+    -- Reset goes low (active) in cycle 200, goes high 2 cycles later
+    wait for CLOCK_PERIOD * 200;
+    aresetn <= '0';
+    wait for CLOCK_PERIOD * 2;
+    aresetn <= '1';
+    wait;
+  end process aresetn_gen;
+
+  -----------------------------------------------------------------------
   -- Generate inputs
   -----------------------------------------------------------------------
 
@@ -273,7 +295,7 @@ begin
     loop
 
       -- Drive inputs T_HOLD time after rising edge of clock
-      wait until rising_edge(aclk);
+      wait until rising_edge(aclk) and aresetn = '1';
       wait for T_HOLD;
 
       -- Drive AXI handshake signals to demonstrate different types of operation
@@ -375,7 +397,7 @@ begin
     -- Previous values of DOUT channel signals
     variable dout_tvalid_prev : std_logic := '0';
     variable dout_tready_prev : std_logic := '0';
-    variable dout_tdata_prev  : std_logic_vector(63 downto 0) := (others => '0');
+    variable dout_tdata_prev  : std_logic_vector(79 downto 0) := (others => '0');
   begin
 
     -- Check outputs T_STROBE time after rising edge of clock
@@ -388,7 +410,7 @@ begin
     -- check that the payload is valid (not X) when TVALID is high
     -- and check that the payload does not change while TVALID is high until TREADY goes high
 
-    if m_axis_dout_tvalid = '1' then
+    if m_axis_dout_tvalid = '1' and aresetn = '1' then
       if is_x(m_axis_dout_tdata) then
         report "ERROR: m_axis_dout_tdata is invalid when m_axis_dout_tvalid is high" severity error;
         check_ok := false;
@@ -423,8 +445,8 @@ begin
   s_axis_a_tdata_imag     <= s_axis_a_tdata(31 downto 16);
   s_axis_b_tdata_real     <= s_axis_b_tdata(15 downto 0);
   s_axis_b_tdata_imag     <= s_axis_b_tdata(31 downto 16);
-  m_axis_dout_tdata_real  <= m_axis_dout_tdata(31 downto 0);
-  m_axis_dout_tdata_imag  <= m_axis_dout_tdata(63 downto 32);
+  m_axis_dout_tdata_real  <= m_axis_dout_tdata(32 downto 0);
+  m_axis_dout_tdata_imag  <= m_axis_dout_tdata(72 downto 40);
 
 end tb;
 
