@@ -33,6 +33,12 @@
     output wire [(C_M00_AXIS_TDATA_WIDTH/8)-1 : 0] m00_axis_tstrb,
     output wire  m00_axis_tlast,
     input wire  m00_axis_tready,
+    
+    input wire  m00_axis_chann_aclk,
+    input wire  m00_axis_chann_aresetn,
+    output wire  m00_axis_chann_tvalid,
+    output wire [C_M00_AXIS_TDATA_WIDTH-1 : 0] m00_axis_chann_tdata,
+    input wire  m00_axis_chann_tready,    
 
     // Ports of Axi Slave Bus Interface S00_AXIS
     input wire  s00_axis_aclk,
@@ -118,8 +124,12 @@
     assign s_axis_b_tvalid = 1;
     assign s_axis_b_tdata = {-channel_q, channel_i};
     
+    
     assign channel_i = (subc_cnt % 10 == 0)? rx_i : ((subc_cnt % 10 == 5) ? -rx_i : channel[channel_idx_write][15 : 0]) ;
     assign channel_q = (subc_cnt % 10 == 0)? rx_q : ((subc_cnt % 10 == 5) ? -rx_q : channel[channel_idx_write][31 : 16]);
+    
+    assign m00_axis_chann_tdata = {channel_q, channel_i};
+    assign m00_axis_chann_tvalid = ((subc_cnt % 10 == 0) || (subc_cnt % 10 == 5)) && (s00_axis_tvalid && s00_axis_tready);
 
     assign rx_i = s00_axis_tdata[15 : 0];
     assign rx_q = s00_axis_tdata[31 : 16];

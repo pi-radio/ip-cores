@@ -52,6 +52,14 @@
 		output wire [(C_M00_AXIS_TDATA_WIDTH/8)-1 : 0] m00_axis_tstrb,
 		output wire  m00_axis_tlast,
 		input wire  m00_axis_tready,
+		
+				// Ports of Axi Master Bus Interface M00_AXIS
+		input wire  m00_axis_cnt_aclk,
+		input wire  m00_axis_cnt_aresetn,
+		output reg  m00_axis_cnt_tvalid,
+		output reg [31 : 0] m00_axis_cnt_tdata,
+		input wire  m00_axis_cnt_tready,
+		
 		output wire [15 : 0] mag_sq
 	);
 	
@@ -63,6 +71,8 @@
     
     reg signed [53:0] tmp_i_sq; 
     reg signed [53:0] tmp_q_sq;
+    
+    reg [31 : 0] clock_counter = 0;
     
     assign tmp_i = s_axis_corr_tdata[26 : 0];
 	assign tmp_q = s_axis_corr_tdata[58 : 32];
@@ -122,7 +132,7 @@
     // State variables to track in which half of the buffer we wrote last
     // 'old_which_half' stores the value of 'which_half' whenever it is 
     // changed. This gives us an indication when a full frame was received
-    reg which_half = 0;
+    wire which_half;
     reg old_which_half = 0;
     
     // State variable to hold the inferred start of frame
@@ -163,24 +173,45 @@
     reg peak_search_abort = 0;
     
     reg edge_case_peak = 0;
+    reg state_change = 0;
+    reg [10 : 0] time_offset = 0;
+    always @(posedge s_axis_corr_aclk) begin
+        if(!s_axis_corr_aresetn)
+            clock_counter <= 0;
+        else
+            if(state_peak_det == SECOND_SEARCH && !state_change) begin
+                 m00_axis_cnt_tdata <= clock_counter - (1024 - max_index);
+                 m00_axis_cnt_tvalid <= 1;
+                 state_change <= 1; 
+            end
+            if(state_peak_det != SECOND_SEARCH)
+                state_change <= 0; 
+            if(m00_axis_cnt_tvalid) begin
+                 m00_axis_cnt_tvalid <= 0;
+            end
+            if(s_axis_corr_tready && s_axis_corr_tvalid)
+                clock_counter <= clock_counter + 1;
+    end
     
     always @(posedge s_axis_corr_aclk) begin
         if(!s_axis_corr_aresetn)
             checkpoint <= 0;
         else
-            if(tx_ended)
+            if(tx_ended && (data_in_queue > 0))
                 checkpoint <= 1;
             else
                 checkpoint <= 0;
     end
     
+    assign which_half = buffer_write[10];
     assign start_tx = (start_of_frame[10 : 0] == 0 && data_in_queue == 0) ? (state_tx == TXING) && ~checkpoint :
                                                     (state_tx == TXING) && (data_in_queue > 0) && ~checkpoint;
     assign buffer_read = start_of_frame + data_sent;
-    assign m00_axis_tvalid = (cp_rm_count >= cp_len) && start_tx;
+    assign m00_axis_tvalid = ((cp_rm_count >= cp_len) && start_tx);// || (tx_ended && data_in_queue == 0 && s_axis_corr_tvalid);
     assign data_in_queue = (buffer_write - buffer_read) >= 2048 ? (buffer_write - buffer_read) & 11'h7ff:
                                                               buffer_write - buffer_read;
     assign m00_axis_tdata =  (start_of_frame[10 : 0] == 0 && data_in_queue == 0) ? s_axis_data_in_tdata :
+                            /*((tx_ended && data_in_queue == 0 && s_axis_corr_tvalid) ? s_axis_data_in_tdata :*/
                             buffer[buffer_read[10 : 0]];
     
     assign tlast_recv = which_half != old_which_half;
@@ -189,8 +220,13 @@
     // can take place. If we are in a transmit state, we only deassert the data tready signal
     // when the queue is full.
     assign stop = (((buffer_write % 1024) == 0) && (buffer_write != 0)) || wrapped;
-    assign s_axis_data_in_tready = ((state_tx != TXING) && (s_axis_corr_tvalid)) || 
-                                    ((state_tx == TXING) && (data_in_queue < 2*1024 - 1) );
+    assign s_axis_data_in_tready = (state_tx == TXING) ? ((data_in_queue < 2*1024 - 1) && s_axis_corr_tvalid) :
+                                    s_axis_corr_tvalid;
+                                    
+                                    
+
+//((state_tx != TXING) && (s_axis_corr_tvalid)) || 
+//                                    ((state_tx == TXING) && (data_in_queue < 2*1024 - 1) );
 
     always @ (posedge s_axis_corr_aclk) begin
         if(!s_axis_corr_aresetn) begin
@@ -199,14 +235,14 @@
             start_of_frame <= 0;
             start_of_frame_tmp <= 0;
             tx_ended_ack1 <= 0;
-            which_half <= 0;
+        //    which_half <= 0;
             noise_floor <= 0;
         end
         else
         if(peak_search_abort == 1)
             peak_search_abort <= 0; 
-        if(s_axis_corr_tlast && s_axis_corr_tvalid)
-            which_half <= ~which_half;
+//        if(s_axis_corr_tlast && s_axis_corr_tvalid)
+//            which_half <= ~which_half;
         if(s_axis_corr_tlast && s_axis_corr_tvalid) begin
         if(notify_reset)
             tx_ended_ack1 = 0;
@@ -237,9 +273,11 @@
                     if(max_index == max_index2) begin
                         if (max_index == 0) begin
                             state_peak_det = PEAK_DETECTED;
+                            time_offset <= 2048;
                             if(state_tx == IDLE) begin
                                 state_tx <= TXING;
                                 start_of_frame <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
+                                
                             end
                             else
                                 start_of_frame_tmp <= which_half ? {buffer_write[11],11'h00} : {buffer_write[11], 11'h400};
@@ -274,6 +312,7 @@
                 if(max_mag3 > 0) begin
                     if(((max_index == max_index3) && (max_index == max_index2)) || (max_index_txing == max_index3)) begin
                         state_peak_det = PEAK_DETECTED;
+
                         if(state_tx == IDLE) begin
                             state_tx <= TXING;
                             start_of_frame[11] <= sof_dec_bit;
@@ -301,6 +340,7 @@
                     if(max_mag2 > 0) begin
                         if(max_index2 <= 512) begin
                             state_peak_det = PEAK_DETECTED;
+
                             if(state_tx == IDLE) begin
                                 state_tx <= TXING;
                                 start_of_frame[11] <= sof_dec_bit;
@@ -310,6 +350,7 @@
                         end
                         else begin
                             state_peak_det = PEAK_DETECTED;
+
                             if(state_tx == IDLE) begin
                                 state_tx <= TXING;
                                 start_of_frame[11] <= sof_dec_bit;
@@ -338,7 +379,7 @@
          
          end
          if (state_tx == TXING) begin
-            if(tx_ended) begin
+            if(tx_ended && (data_in_queue > 0)) begin
                tx_ended_ack1 <= 1;
                if(start_of_frame_tmp > 0) begin
                     start_of_frame <= start_of_frame_tmp;
@@ -378,14 +419,14 @@
           if(state_peak_det == PEAK_DETECTED || peak_search_abort) begin
               max_mag <= 0;
               max_index <= 0;
-              samp_cnt <= 0;
+              //samp_cnt <= 0;
               max_mag2 <= 0;
               max_index2 <= 0;
               max_mag3 <= 0;
               max_index3 <= 0;
                  
           end
-          if(tx_ended)
+          if(tx_ended && (data_in_queue > 0))
             tx_ended_ack2 <= 1;
           if(s_axis_corr_tvalid) begin
             if (state_peak_det == NOISE_EST) 
@@ -479,7 +520,7 @@
         cp_rm_count <= 0;
      end
      else begin
-         if(tx_ended) begin
+         if(tx_ended && (data_in_queue > 0)) begin
             notify_reset <= 1;
             tx_ended <= 0;
             data_sent <= 0;
