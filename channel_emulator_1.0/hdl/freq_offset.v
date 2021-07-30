@@ -57,7 +57,8 @@ module freq_offset(
     wire pt_s_valid, pt_s_ready, pt_m_valid, pt_m_ready;
     wire [31 : 0] pt_s_tdata, pt_m_tdata;
     
-
+    wire m_axis_tvalid, m_axis_tready;
+    wire [31 : 0] m_axis_tdata;
     
     cordic_0 complex_sine (
       .aclk(clk),                                // input wire aclk
@@ -70,11 +71,22 @@ module freq_offset(
       .m_axis_dout_tdata(m_axis_dout_tdata)      // output wire [31 : 0] m_axis_dout_tdata
 );
 
+sine_fifo sine_fifo_inst (
+  .s_aclk(clk),                // input wire s_aclk
+  .s_aresetn(areset_n),          // input wire s_aresetn
+  .s_axis_tvalid(m_axis_dout_tvalid),  // input wire s_axis_tvalid
+  .s_axis_tready(m_axis_dout_tready),  // output wire s_axis_tready
+  .s_axis_tdata(m_axis_dout_tdata),    // input wire [31 : 0] s_axis_tdata
+  .m_axis_tvalid(m_axis_tvalid),  // output wire m_axis_tvalid
+  .m_axis_tready(m_axis_tready),  // input wire m_axis_tready
+  .m_axis_tdata(m_axis_tdata)    // output wire [31 : 0] m_axis_tdata
+);
+
     freq_off_mult_0 mult (
       .aclk(clk),                              // input wire aclk
       .aresetn(areset_n),                        // input wire aresetn
-      .s_axis_a_tvalid(m_axis_dout_tvalid),        // input wire s_axis_a_tvalid
-      .s_axis_a_tready(m_axis_dout_tready),        // output wire s_axis_a_tready
+      .s_axis_a_tvalid(m_axis_tvalid),        // input wire s_axis_a_tvalid
+      .s_axis_a_tready(m_axis_tready),        // output wire s_axis_a_tready
       .s_axis_a_tdata(mult_in),          // input wire [31 : 0] s_axis_a_tdata
       .s_axis_b_tvalid(pt_s_valid),        // input wire s_axis_b_tvalid
       .s_axis_b_tready(pt_s_ready),        // output wire s_axis_b_tready
@@ -86,15 +98,15 @@ module freq_offset(
     
     assign passthrough = phase_valid && (phase == 16'h0000);
     
-    assign mult_in_q = (m_axis_dout_tdata[31 : 16] == 16'h4000) ? 16'h7fff :
-                        ((m_axis_dout_tdata[31 : 16] == 16'hbfff) ? 16'h8000 :
-                          m_axis_dout_tdata[31 : 16] << 1);
-    assign mult_in_i = (m_axis_dout_tdata[15 : 0] == 16'h4000) ? 16'h7fff :
-                        ((m_axis_dout_tdata[15 : 0] == 16'hbfff) ? 16'h8000 :
-                          m_axis_dout_tdata[15 : 0] << 1);
+    assign mult_in_q = (m_axis_tdata[31 : 16] == 16'h4000) ? 16'h7fff :
+                        ((m_axis_tdata[31 : 16] == 16'hbfff) ? 16'h8000 :
+                          m_axis_tdata[31 : 16] << 1);
+    assign mult_in_i = (m_axis_tdata[15 : 0] == 16'h4000) ? 16'h7fff :
+                        ((m_axis_tdata[15 : 0] == 16'hbfff) ? 16'h8000 :
+                          m_axis_tdata[15 : 0] << 1);
     assign mult_in = {mult_in_q, mult_in_i};
-    assign i = m_axis_dout_tdata[15 : 0];
-    assign q = m_axis_dout_tdata[31 : 16];
+    assign i = m_axis_tdata[15 : 0];
+    assign q = m_axis_tdata[31 : 16];
     assign m_tdata_i = mult_data_out[32 : 0] >> 15;
     assign m_tdata_q = mult_data_out[72 : 40] >> 15;
     assign pt_m_tdata = {m_tdata_q , m_tdata_i};
@@ -125,7 +137,5 @@ module freq_offset(
             end
         end
     end    
-    
-    
     
 endmodule
