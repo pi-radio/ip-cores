@@ -121,7 +121,7 @@
     wire signed [15 : 0] out_re;
     wire signed [15 : 0] out_im;
     
-    assign s_axis_b_tvalid = 1;
+    assign s_axis_a_tvalid = ((subc_cnt % 10 == 0) || (subc_cnt % 10 == 5)) ? 0 : 1;
     assign s_axis_b_tdata = {-channel_q, channel_i};
     
     
@@ -235,7 +235,7 @@ end
     cmpy_eq_0 mult (
         .aclk(m00_axis_aclk), // input wire aclk
         .aresetn(m00_axis_aresetn), 
-        .s_axis_a_tvalid(s00_axis_tvalid), // input wire s_axis_a_tvalid
+        .s_axis_a_tvalid(s_axis_a_tvalid), // input wire s_axis_a_tvalid
         .s_axis_a_tready(s00_axis_tready), // output wire s_axis_a_tready
         .s_axis_a_tdata(s00_axis_tdata), // input wire [31 : 0] s_axis_a_tdata
         .s_axis_b_tvalid(s00_axis_tvalid), // input wire s_axis_b_tvalid

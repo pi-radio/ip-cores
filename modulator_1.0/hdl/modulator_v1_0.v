@@ -14,7 +14,7 @@
 		parameter integer C_S00_AXI_ADDR_WIDTH	= 4,
 
 		// Parameters of Axi Slave Bus Interface S00_AXIS
-		parameter integer C_S00_AXIS_TDATA_WIDTH	= 32,
+		parameter integer C_S00_AXIS_TDATA_WIDTH	= 40,
 
 		// Parameters of Axi Master Bus Interface M00_AXIS
 		parameter integer C_M00_AXIS_TDATA_WIDTH	= 32,
@@ -114,7 +114,8 @@
         .clk(s00_axis_aclk),
         .rst(s00_axis_aresetn),
         .m_tlast(m00_axis_tlast),
-        .reset_mod(reset_mod)
+        .reset_mod(reset_mod),
+        .tstrb(s00_axis_tstrb)
 	);
 	
 	endmodule
