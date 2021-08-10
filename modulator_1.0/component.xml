@@ -465,12 +465,15 @@
         <spirit:language>verilog</spirit:language>
         <spirit:modelName>modulator_v1_0</spirit:modelName>
         <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
           <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f35dc852</spirit:value>
+            <spirit:value>869979f4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -481,12 +484,15 @@
         <spirit:language>verilog</spirit:language>
         <spirit:modelName>modulator_v1_0</spirit:modelName>
         <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogbehavioralsimulation_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
           <spirit:localName>xilinx_verilogbehavioralsimulation_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f35dc852</spirit:value>
+            <spirit:value>869979f4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -887,7 +893,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH&apos;)) - 1)">39</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -904,7 +910,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH&apos;)) / 8) - 1)">4</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1047,7 +1053,7 @@
         <spirit:name>C_S00_AXIS_TDATA_WIDTH</spirit:name>
         <spirit:displayName>C S00 AXIS TDATA WIDTH</spirit:displayName>
         <spirit:description>AXI4Stream sink: Data Width</spirit:description>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH" spirit:order="3" spirit:rangeType="long">32</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXIS_TDATA_WIDTH" spirit:order="3" spirit:rangeType="long">40</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_S00_AXI_DATA_WIDTH</spirit:name>
@@ -1096,6 +1102,10 @@
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_list_d6a7b2e7</spirit:name>
+      <spirit:enumeration>40</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_pairs_ce1226b1</spirit:name>
       <spirit:enumeration spirit:text="true">1</spirit:enumeration>
       <spirit:enumeration spirit:text="false">0</spirit:enumeration>
@@ -1105,6 +1115,11 @@
     <spirit:fileSet>
       <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
       <spirit:file>
+        <spirit:name>src/fifo_modulator_1/fifo_modulator.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_fifo/fifo_mod_inst</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>src/fifo_impl.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
@@ -1115,12 +1130,27 @@
       <spirit:file>
         <spirit:name>hdl/modulator_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_aba31259</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_834fc87f</spirit:userFileType>
       </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.2">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
+        <spirit:name>src/fifo_modulator_1/fifo_modulator.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_fifo/fifo_mod_inst</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>src/fifo_impl.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
@@ -1132,6 +1162,16 @@
         <spirit:name>hdl/modulator_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogbehavioralsimulation_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.2">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_softwaredriver_view_fileset</spirit:name>
@@ -1188,7 +1228,7 @@
       <spirit:name>C_S00_AXIS_TDATA_WIDTH</spirit:name>
       <spirit:displayName>C S00 AXIS TDATA WIDTH</spirit:displayName>
       <spirit:description>AXI4Stream sink: Data Width</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXIS_TDATA_WIDTH" spirit:choiceRef="choice_list_6fc15197" spirit:order="3">32</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXIS_TDATA_WIDTH" spirit:choiceRef="choice_list_d6a7b2e7" spirit:order="3">40</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1297,8 +1337,12 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>modulator_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>153</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2021-06-26T13:05:57Z</xilinx:coreCreationDateTime>
+      <xilinx:xpmLibraries>
+        <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
+        <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
+      </xilinx:xpmLibraries>
+      <xilinx:coreRevision>174</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2021-08-10T10:16:17Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@649f8506_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@13106956_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
@@ -2989,16 +3033,295 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5cbf0ca8_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7ad35ef1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2f3d7fa2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@207ae53b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3877ed87_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@21aa932_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7144fd90_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@582ddc85_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@69000b8a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@481a8249_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4a94117e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5f0931cd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4211dfaa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5ddf6dfb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e157b11_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@29be53c7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3ab0a6bc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4abb5525_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1004d941_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@540087ca_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@571aae48_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@36ef105c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@23e10843_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@325cc35_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@463fe1a9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@713c7193_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@9bcbb1e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@e1d2efa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@28eff6eb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@305e146_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@43561d3f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5a8e27bd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2be70a77_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@21a9cf2b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63908961_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@36baf036_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4af563a0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ee38c53_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@707e3c9f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ea14115_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7753a0f5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5edc8ec0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2a04706c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7c898fa2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@587df0b3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@703da6e3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5f3587f1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5acc081b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3c0c624b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7f65669a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2c488078_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@36b39872_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5366d454_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5bed667_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@723843bc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@680c9b11_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@303ec40f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@e7d1f6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@268ee6a7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2fd5dadd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@19f07402_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5ecfb72a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@296d8ba7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@425d6499_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2205efe9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e759f3e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@14beff2d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7b1b0842_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2703beed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@42ac27fe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@61d10bdc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4cd0ad16_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@500bbba3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@29e698ed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@20becb98_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@251bc96e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5f933c64_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@16131bb2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6a1b0436_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2ee20d1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3e310ae7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2d97603f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@68395bc0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1156a93a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@675b4d14_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@30ac0ab2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5c13a12e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@26f1aa77_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@14e30bbe_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@b40310b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7de2ef55_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d7a90da_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@39d32325_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@393f28dd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@22c8848b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@721f4198_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7239f920_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d7ee117_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1fc5f258_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@30333192_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@248959f9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5d0be175_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@37f07159_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@15a0d445_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1b9dcf24_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3037c688_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2e21f15a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1bc486ae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f94e2cc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@489201a2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1d0cb650_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@44910cf6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5bb2793d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1cbed0c7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3117ed8c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d815466_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@254ba987_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7b7e4e87_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@38ff4c96_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@28feccc6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6affec4e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@17989f69_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1ccb18b0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@67736fa5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@307a2c6b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2bbd213f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@655b1341_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@31485088_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@53adb31a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@64d08ab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@292c03d3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4ee78e4a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@39dca303_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@33a9f529_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1799ff82_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4fe8a1db_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@530377d6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5d596fa7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@59f85771_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7929c4cd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e769cb0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@72e334d1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d63d5bc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6c2fffc5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@26f7a042_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@20a90612_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@ac7d63b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@17b9bf5a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2739ef80_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6996d885_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@25fca43b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@303662cf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1f2c7530_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7384cc2a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1390f79e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6fc104ed_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@19320cfc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6f6c4cb5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@707e34b1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3b25d139_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4441bee3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4c6b63e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5b60f810_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@62bf15a6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7e9a75ab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@758026a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@682321b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ad7eb3a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7159303c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5bcdc05d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7c97777_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1b07e8f4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3299f9df_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7b146c66_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4145b80e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@31568d8d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5224286b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6a9c639a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@585cf089_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@196dcc9a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5767d3dd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@36a4a90a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3dc96dec_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1547549e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@19942dcd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@32615671_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2becbb55_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2d6fa91d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@a3ee9ce_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4771388a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3700ad26_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@66767cbb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6790cd56_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4404c8ad_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@73d20e3e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@76fc00c1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2bf5d13e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3106afd9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3bc6b199_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1808a27d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@44240e01_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@49b1f43f_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3c5dca6b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@61bdd7a9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7e19ff61_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5c07fc33_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7c1c340b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ea31caa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2b2d2251_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@69e11316_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@152f8537_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7c6757_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f58a5fa_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@84adfdd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6b88b69b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@8c6e77e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@a18c5e2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7b2790a4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5df6d351_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2caeaee4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@16a2f405_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1c113b20_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@785bde39_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@40e4f4cf_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@58336de1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1705cf7d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5cbf7c7b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3ad835c7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@a705857_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@37d2ae36_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@dfa7684_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@767d5e7a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@158bbf55_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4688ff6d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@77e28488_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2a237982_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1bbb833d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@79c896e5_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@35f8769d_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63117a9a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3be44104_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@343772ae_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b4ee65e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@496528e7_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@574dad4e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1676704b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@77d69e4a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@e79dbcc_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1b4797fd_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@67fae9f0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1b71cbd0_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@173c36e3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1d108b24_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6f0c8382_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2c6ea800_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2a0ce053_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5af1a053_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@15fcc37c_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1657d294_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7444673a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6c76fc64_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5ac3d772_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d3fb484_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@237ee5eb_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d0f578e_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@316165a1_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1268425a_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@37f902b9_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@72dcb104_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6bd94f98_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1373d49b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5894556b_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@fae3c56_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@48a5c9b4_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@69555195_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5b922684_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6efb52d3_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@75c95fa6_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@487cb5ab_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1cd2c1b2_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@390523ee_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2913786_ARCHIVE_LOCATION">/mnt/hdd/projects/ip_repo/modulator_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="5c07fc6c"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="04f2142b"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="46c1c638"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="e88aafc0"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="2404cbed"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1431ec07"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="a379bd19"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="8d5bc870"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="a5a658e6"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
