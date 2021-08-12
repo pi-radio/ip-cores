@@ -47,12 +47,26 @@
 	reg [C_M00_AXIS_TDATA_WIDTH-1 : 0] byte_out = 0;
 	reg byte_ready = 0;
 	wire signed [15 : 0] i_data;
+	reg [10 : 0] count_samples;
 	
 	
     assign s00_axis_tready = m00_axis_tready;
     assign m00_axis_tdata = byte_out;
     assign i_data = s00_axis_tdata[15 : 0];
     assign m00_axis_tvalid = byte_ready; 
+    assign m00_axis_tlast = m00_axis_tvalid && (count_samples == 19);
+    
+    always @(posedge s00_axis_aclk) begin
+        if(!s00_axis_aresetn)
+            count_samples <= 0;
+        else begin
+            if(byte_ready)
+                if(count_samples < 19)
+                    count_samples <= count_samples + 1;
+                else if(count_samples == 19)
+                    count_samples <= 0;
+        end
+    end
     
     always @(posedge s00_axis_aclk) begin
         if(!s00_axis_aresetn) begin
