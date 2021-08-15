@@ -68,9 +68,9 @@ module fifo_impl # (
     assign s_axis_tdata = {24'h000000, wdata};
     assign s_axis_tstrb = {3'h00, tstrb};
     
-    assign m_axis_tready = (m_axis_tvalid && m_axis_tstrb == 8'h01) ? ((state == READ_FIFO) && (bit_cnt == 31 )):
+    assign m_axis_tready = (m_ready && ((m_axis_tvalid && m_axis_tstrb == 8'h01) ? ((state == READ_FIFO) && (bit_cnt == 31 )):
                              ((m_axis_tvalid && m_axis_tstrb == 8'h00) ?  ((state == READ_FIFO) && (bit_cnt == 39 )) 
-                                                                        : 0);
+                                                                        : 0)));
 //    assign current_sample = (m_axis_tready && m_axis_tvalid && bit_cnt == 0) ? m_axis_tdata : current_sample; // Latch here
 //    assign current_tstrb = (m_axis_tready && m_axis_tvalid && bit_cnt == 0) ? m_axis_tstrb : current_tstrb;
     

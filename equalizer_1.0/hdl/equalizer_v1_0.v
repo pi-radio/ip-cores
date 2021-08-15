@@ -121,7 +121,7 @@
     wire signed [15 : 0] out_re;
     wire signed [15 : 0] out_im;
     
-    assign s_axis_a_tvalid = ((subc_cnt % 10 == 0) || (subc_cnt % 10 == 5)) ? 0 : 1;
+    assign s_axis_a_tvalid = s00_axis_tvalid && (((subc_cnt % 10 == 0) || (subc_cnt % 10 == 5)) ? 0 : 1);
     assign s_axis_b_tdata = {-channel_q, channel_i};
     
     
