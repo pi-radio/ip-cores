@@ -32,6 +32,7 @@
     wire mult_valid;
     wire b_ready;
     wire s_axis_a_tready;
+    reg send_single = 0;
 
     
     reg drop_first = 1;
@@ -96,7 +97,8 @@ wire delay_fifo_s_axis_tvalid, delay_fifo_s_axis_tready,
     assign delay_fifo_s_axis_tvalid = in_valid && b_ready;
     assign accum_fifo_s_axis_tvalid = delay_fifo_s_axis_tvalid;
     
-    assign out_valid = valid_shift_reg[0] || (init == 2'h2)  /*|| (init && accum_fifo_m_axis_tvalid)*/;
+    assign out_valid = (valid_shift_reg[0] && mult_valid) || (mult_valid && accum_fifo_m_axis_tvalid && init == 2'h2) || 
+                                        (mult_valid && send_single) /*|| (init && accum_fifo_m_axis_tvalid)*/;
     assign in_ready = b_ready;
     
     assign acc_out[31 : 16] = /*(init) ? accum_fifo_m_axis_tdata[DATA_WIDTH - 1 : DATA_WIDTH/2] : */
@@ -123,7 +125,7 @@ wire delay_fifo_s_axis_tvalid, delay_fifo_s_axis_tready,
         else
           if(init == 1'h1 && accum_fifo_m_axis_tvalid && out_ready)
             init <= 2'h2;
-          else if(init == 2'h2)
+          else if(init == 2'h2 && out_valid)
             init <= 2'h0;
     end
 
@@ -134,4 +136,11 @@ wire delay_fifo_s_axis_tvalid, delay_fifo_s_axis_tready,
         else if(out_ready)
             valid_shift_reg[1 : 0] <= {valid_shift_reg[0], mult_valid && accum_fifo_m_axis_tvalid};
     end        
+    
+    always @(posedge clk) begin
+        if(valid_shift_reg[0])
+            send_single <= 1;
+        if(send_single == 1 && out_valid)
+            send_single <= 0;
+    end
 	endmodule

@@ -126,9 +126,9 @@
     assign accumulator[0] = {mult_imag, mult_real};
     assign valid[0] = mult_0_out_valid;
     
-    assign m00_axis_tdata = accumulator[NUM_TAPS ];
-    assign ready[NUM_TAPS ] = m00_axis_tready;
-    assign m00_axis_tvalid = valid[NUM_TAPS ];
+    assign m00_axis_tdata = accumulator[NUM_TAPS - 1];
+    assign ready[NUM_TAPS - 1] = m00_axis_tready;
+    assign m00_axis_tvalid = valid[NUM_TAPS - 1];
 
     
     fir_filt_v1_0_S00_AXI # ( 
@@ -177,7 +177,7 @@
     
     genvar i;
     generate
-        for( i = 0; i < NUM_TAPS; i = i+1) begin : generate_modules
+        for( i = 0; i < NUM_TAPS - 1; i = i+1) begin : generate_modules
             tap tap_inst(
                 .clk(s00_axis_aclk),
                 .rstn(s00_axi_aresetn),

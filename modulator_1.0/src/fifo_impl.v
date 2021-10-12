@@ -78,7 +78,7 @@ module fifo_impl # (
                                                             : {16'h0000, 16'h8000};
                                                             
     assign m_valid = (m_axis_tvalid);
-    assign m_tlast = (subc_cnt == 1023) && (state == INSERT_NULL);
+    assign m_tlast = (subc_cnt == 1023) && (state == INSERT_NULL) && m_valid;
     
     assign rdata = (state == INSERT_NULL) ? 32'h00000000 : modulated_sample;
     
