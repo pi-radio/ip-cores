@@ -26,7 +26,8 @@ module stream_worker #
     (
     
     parameter integer C_S_AXIS_TDATA_WIDTH	= 32,
-    parameter integer C_M_AXIS_TDATA_WIDTH	= 32
+    parameter integer C_M_AXIS_TDATA_WIDTH	= 32,
+    parameter integer repeats = 0
     )
     (
     	// AXI4Stream sink: Clock
@@ -80,6 +81,9 @@ module stream_worker #
             skip_count_samples <= 0;
         end
         else begin
+            if(repeats && count_samples == 1) begin
+                count_samples <= stream_len;
+            end
             if(skip_len_valid && len_ready) begin
                 skip_count_samples <= skip_length;
             end

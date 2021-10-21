@@ -51,10 +51,14 @@
 		input wire [C_S_AXIS_CONFIG_TDATA_WIDTH-1 : 0] s_axis_config_tdata,
 		input wire [(C_S_AXIS_CONFIG_TDATA_WIDTH/8)-1 : 0] s_axis_config_tstrb,
 		input wire  s_axis_config_tlast,
-		input wire  s_axis_config_tvalid
+		input wire  s_axis_config_tvalid,
+		
+		output wire start
 	);
 	
 	wire [799 : 0] sync_word;
+	
+	assign start = m_axis_data_tvalid;
 	
 	sync_word_module #(
        .USED_CARRIERS(800)

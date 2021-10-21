@@ -36,12 +36,12 @@ module data_module #
     
     
     assign init_done = !initial_setup && sync_word_ready;
-    assign m_axis_data_tdata = (symbol_cnt == 0) ? sync_word[subc_cnt +: S_AXIS_TDATA_WIDTH]
+    assign m_axis_data_tdata = (state_sync_word) ? sync_word[subc_cnt +: S_AXIS_TDATA_WIDTH]
                                                  :  data_out;
-    assign m_axis_data_tstrb[0] = (symbol_cnt == 0) ? 1 : 0;
+    assign m_axis_data_tstrb[0] = (state_sync_word) ? 1 : 0;
     assign m_axis_data_tstrb[(M_AXIS_TDATA_WIDTH/8)-1 : 1] = 0;
     assign s_axis_data_tready = init_done && (symbol_cnt != 0) && m_axis_data_tready;
-    assign m_axis_data_tvalid = init_done && (symbol_cnt == 0 || s_axis_data_tvalid);
+    assign m_axis_data_tvalid = init_done && s_axis_data_tvalid;
     
     assign data_out[4 : 1] = s_axis_data_tdata[3 : 0];
     assign data_out[9 : 6] = s_axis_data_tdata[7 : 4];
@@ -74,7 +74,7 @@ module data_module #
         if(!s_axis_data_aresetn)
             symbol_cnt <= 0;
         else begin
-            if((subc_cnt == (USED_CARRIERS - current_length)) && init_done && (symbol_cnt == 0 || s_axis_data_tvalid) && m_axis_data_tready)
+            if((subc_cnt == (USED_CARRIERS - current_length)) && m_axis_data_tvalid && m_axis_data_tready)
                 if(symbol_cnt < SYMBOLS_PER_FRAME - 1)
                     symbol_cnt <= symbol_cnt + 1;
                 else
@@ -86,7 +86,7 @@ module data_module #
         if(!s_axis_data_aresetn)
             subc_cnt <= 0;
         else begin
-            if(init_done && (symbol_cnt == 0 || s_axis_data_tvalid) && m_axis_data_tready)
+            if(m_axis_data_tvalid && m_axis_data_tready)
                 if(subc_cnt < (USED_CARRIERS - current_length))
                     subc_cnt <= subc_cnt + current_length;
                 else

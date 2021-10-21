@@ -57,7 +57,7 @@
 		input wire  m00_axis_cnt_aclk,
 		input wire  m00_axis_cnt_aresetn,
 		output reg  m00_axis_cnt_tvalid,
-		output reg [31 : 0] m00_axis_cnt_tdata,
+		output wire [63 : 0] m00_axis_cnt_tdata,
 		input wire  m00_axis_cnt_tready,
 		
 		output wire [15 : 0] mag_sq
@@ -175,12 +175,20 @@
     reg edge_case_peak = 0;
     reg state_change = 0;
     reg [10 : 0] time_offset = 0;
+    
+    assign m00_axis_cnt_tdata[0] = state_tx;
+    assign m00_axis_cnt_tdata[3:1] = state_peak_det;
+    assign m00_axis_cnt_tdata[4] = start_tx;
+    assign m00_axis_cnt_tdata[17 : 5] = start_of_frame;
+    assign m00_axis_cnt_tdata[30 : 18] = data_in_queue;
+    assign m00_axis_cnt_tdata[56 : 31] = mag_sq_sample;
+    
+    
     always @(posedge s_axis_corr_aclk) begin
         if(!s_axis_corr_aresetn)
             clock_counter <= 0;
         else
             if(state_peak_det == SECOND_SEARCH && !state_change) begin
-                 m00_axis_cnt_tdata <= clock_counter - (1024 - max_index);
                  m00_axis_cnt_tvalid <= 1;
                  state_change <= 1; 
             end

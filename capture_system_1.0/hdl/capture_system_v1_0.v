@@ -40,7 +40,8 @@
 
 		// Parameters of Axi Master Bus Interface M00_AXIS
 		parameter integer C_M00_AXIS_TDATA_WIDTH	= 32,
-		parameter integer C_M00_AXIS_START_COUNT	= 32
+		parameter integer C_M00_AXIS_START_COUNT	= 32,
+		parameter integer repeats = 0
 	)
 	(
 		// Users to add ports here
@@ -132,7 +133,8 @@
 	
 	stream_worker # (
 	.C_S_AXIS_TDATA_WIDTH(C_S00_AXIS_TDATA_WIDTH),
-	.C_M_AXIS_TDATA_WIDTH(C_M00_AXIS_TDATA_WIDTH)
+	.C_M_AXIS_TDATA_WIDTH(C_M00_AXIS_TDATA_WIDTH),
+	.repeats(repeats)
 	)
 	worker_inst(
 		s00_axi_aclk,
