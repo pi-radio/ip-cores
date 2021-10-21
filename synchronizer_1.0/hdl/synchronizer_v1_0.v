@@ -362,8 +362,15 @@
                             if(state_tx == IDLE) begin
                                 state_tx <= TXING;
                                 start_of_frame[11] <= sof_dec_bit;
-                                start_of_frame <= which_half ? (1024  - max_index2) & 11'h7ff:
-                                                                (1024 + 1024 - max_index2)& 11'h7ff;
+                                if(max_mag < max_mag2) begin
+                                    start_of_frame <= which_half ? (1024 + 1024 - max_index2) & 11'h7ff:
+                                        (1024 - max_index2)& 11'h7ff;
+                                end
+                                else begin
+                                    start_of_frame <= which_half ? (1024  - max_index2) & 11'h7ff:
+                                        (1024 + 1024 - max_index2)& 11'h7ff;
+                                end
+
                             end
                         end
                     end
